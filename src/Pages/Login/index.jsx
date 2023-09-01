@@ -3,62 +3,75 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/auth.context";
 
-const API_URL = 'http://localhost:5005';
+const API_URL = "http://localhost:5005";
 
 function LoginPage() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState(undefined);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
-    const {storeToken, authenticateUser} = useContext(AuthContext);
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        const requestBody = {email, password};
+    const requestBody = { email, password };
 
-        axios.post(`${API_URL}/auth/login`, requestBody)
-        .then((response) => {
-            storeToken(response.data.authToken);
-            authenticateUser();
-            navigate('/');
+    axios
+      .post(`${API_URL}/auth/login`, requestBody)
+      .then((response) => {
+        storeToken(response.data.authToken);
+        authenticateUser();
+        navigate("/home");
 
-        // Check if user is a kennel manager
+        /*         // Check if user is a kennel manager
         if (response.data.payload.isKennelManager === true) {
             navigate('/manager'); // Redirect to manager page
         } else {
             navigate('/user'); // Redirect to user page
         }
+ */
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
+  };
+  return (
+    <div>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
 
-        })
-        .catch((error) => {
-            const errorDescription = error.response.data.message;
-            setErrorMessage(errorDescription);
-        })
-    }
-    return (
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <label>Email:
-                    <input type="email" name="email" value={email}
-                    onChange={(e) => setEmail(e.target.value)} />
-                </label>
+        <label>
+          Password:
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
 
-                <label>Password:
-                    <input type="password" name="password" value={password}
-                    onChange={(e) => setPassword(e.target.value)} />
-                </label>
+        <button type="submit">Login</button>
+      </form>
+      {errorMessage && <p>{errorMessage}</p>}
 
-            <button type="submit">Login</button>
-            </form>
-            {errorMessage && <p>{errorMessage}</p>}
-            <p>Don't have an account yet?</p>
-            <Link to="/signup"></Link>
-        </div>
-    )
+      <Link to="/signup">
+        <p>Don't have an account yet?</p>
+      </Link>
+    </div>
+  );
 }
 
 export default LoginPage;
