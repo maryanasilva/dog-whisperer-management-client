@@ -10,7 +10,7 @@ function AuthProvideWrapper(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState(null);
 
-    const [isKennelManager, setIsKennelManager] = useState(false);
+    const [IsKennelsManager, setIsKennelsManager] = useState(false);
 
    /* function storeToken(token) {
         localStorage.setItem('authToken', token)
@@ -58,7 +58,7 @@ function AuthProvideWrapper(props) {
     }, []);
 
     return (
-        <AuthContext.Provider value={{isLoggedIn, isLoading, user, storeToken, authenticateUser, removeToken, logOutUser, isKennelManager}}>
+        <AuthContext.Provider value={{isLoggedIn, isLoading, user, storeToken, authenticateUser, removeToken, logOutUser, IsKennelsManager}}>
             {props.children}
         </AuthContext.Provider>
     )

@@ -5,6 +5,9 @@ import { AuthContext } from "../../Context/auth.context";
 
 const API_URL = 'http://localhost:5005';
 
+const videoUrl =
+    'https://player.vimeo.com/external/503450246.sd.mp4?s=cb024b2ead85efa62d5b5db6a0da6938ce752bb4&profile_id=164&oauth2_token_id=57447761';
+
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -21,23 +24,31 @@ function LoginPage() {
 
         axios.post(`${API_URL}/auth/login`, requestBody)
         .then((response) => {
+          if (response.data && response.data.authToken) {
             storeToken(response.data.authToken);
             authenticateUser();
             navigate('/');
-
-        // Check if user is a kennel manager
-        if (response.data.payload.isKennelManager === true) {
-            navigate('/manager'); // Redirect to manager page
-        } else {
-            navigate('/user'); // Redirect to user page
-        }
-
+            
+            // Check if user is a kennel manager
+            if (response.data.payload && response.data.payload.IsKennelsManager === true) {
+              navigate('/manager'); // Redirect to manager page
+            } else {
+              navigate('/user'); // Redirect to user page
+            }
+          } else {
+            console.error("Invalid response from the server:", response);
+          }
         })
         .catch((error) => {
+          if (error.response) {
             const errorDescription = error.response.data.message;
             setErrorMessage(errorDescription);
-        })
-    }
+          } else {
+            console.error("An error occurred:", error);
+          }
+        });
+      
+}
     return (
         <div>
             <h1>Login</h1>

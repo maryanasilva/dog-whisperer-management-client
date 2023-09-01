@@ -11,7 +11,7 @@ function IsPrivate({children}) {
         return <Navigate to="/login" />
     } 
     else { 
-        return children; 
+        return children; // Render the children (e.g., manager pages)
     }
 }
 export default IsPrivate;
