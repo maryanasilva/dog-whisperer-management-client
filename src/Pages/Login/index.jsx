@@ -24,7 +24,7 @@ function LoginPage() {
       .then((response) => {
         storeToken(response.data.authToken);
         authenticateUser();
-        navigate("/home");
+        navigate("/profile");
 
         /*         // Check if user is a kennel manager
         if (response.data.payload.isKennelManager === true) {

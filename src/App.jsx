@@ -5,8 +5,7 @@ import LoginPage from "./Pages/Login";
 import Navbar from "./Components/NavBar";
 import HomePage from "./Pages/HomePage";
 import React from "react";
-import ManagerPage from "./Pages/Manager";
-import UserPage from "./Pages/User";
+import ProfilePage from "./Pages/Profile";
 import IsAnon from "./Components/IsAnon";
 import IsPrivate from "./Components/IsPrivate";
 
@@ -17,18 +16,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
-          path="/manager"
+          path="/profile"
           element={
             <IsPrivate>
-              <ManagerPage />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path="/user"
-          element={
-            <IsPrivate>
-              <UserPage />
+              <ProfilePage />
             </IsPrivate>
           }
         />

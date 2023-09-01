@@ -31,13 +31,8 @@ function SignUpPage(props) {
     // we send these infos to Backend
     axios
       .post(`${API_URL}/auth/signup`, requestBody)
-      .then((/* response */) => {
+      .then(() => {
         navigate("/login");
-        /*         if (isKennelsManager) {
-          navigate("/manager"); // Redirect to manager page
-        } else {
-          navigate("/user"); // Redirect to user page
-        } */
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
