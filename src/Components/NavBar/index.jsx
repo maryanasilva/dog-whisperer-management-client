@@ -9,16 +9,19 @@ function Navbar() {
   return (
     <nav className='navbar'>
       <div className='navbar-left'>
-          <Link to="/">
-              <button>Home</button>
-          </Link>
+          <Link to="/"><button>Home</button></Link>
+          <Link to="/kennels"><button>Kennels</button></Link>
+          <Link to="/schools"><button>Schools</button></Link>
+          <Link to="/petCare"><button>Pet Care</button></Link>
       </div>
       
       <div className="navbar-right">
         {isLoggedIn ? (
           <>
+            <div className="user-info">
+              <p>{user && user.name}</p>
+            </div>
             <button onClick={logOutUser}>Logout</button>
-            <p>{user && user.name}</p>
           </>
         ) : (
           <>

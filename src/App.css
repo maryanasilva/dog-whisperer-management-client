@@ -1,38 +1,3 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .card {
   padding: 2em;
 }
@@ -40,3 +5,183 @@
 .read-the-docs {
   color: #888;
 }
+
+/* KennelPage */
+.kennel-page {
+  position: relative;
+  height: 100vh; /* Set the height to fill the viewport height */
+  overflow: hidden;
+}
+
+/* Video background styles */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.kennel-cards {
+  height: calc(100vh - 60px); /* Adjust the height as needed to account for the space taken by the <h2> and navbar */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: transparent;
+  border-radius: 10px;
+  overflow-y: scroll; /* Enable vertical scrolling */
+}
+
+.kennel-card {
+  background-color: rgba(192, 192, 192, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.kennel-card img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+}
+
+.kennel-card h3 {
+  margin-top: 10px;
+}
+
+.kennel-card p {
+  margin-top: 10px;
+}
+
+/* Hide the scroll bar */
+.kennel-cards::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.kennel-cards::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.kennel-cards::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  outline: none;
+}
+
+/* LoginPage */
+.login-box {
+  background-color: rgba(245, 245, 245, 0.8); /* Semi-transparent light gray background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.login-box h1 {
+  color: #333; /* Dark text color */
+}
+
+.login-box form {
+  margin-top: 20px;
+}
+
+.login-box label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.login-box input[type="email"],
+.login-box input[type="password"] {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px;
+}
+
+.login-box button {
+  background-color: #007bff; /* Blue button background color */
+  color: #fff; /* White button text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-box button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.login-box p {
+  margin-top: 10px;
+  color: #333; /* Dark text color */
+}
+
+/* SignUpPage */
+.signUp-box {
+  background-color: rgba(245, 245, 245, 0.8); /* Semi-transparent light gray background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.signUp-box h1 {
+  color: #333; /* Dark text color */
+}
+
+.signUp-box form {
+  margin-top: 20px;
+}
+
+.signUp-box label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.signUp-box input[type="email"],
+.signUp-box input[type="password"],
+.signUp-box input[type="text"] {
+  width: 90%; /* Reduced width */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px;
+}
+
+.signUp-box button {
+  background-color: #007bff; /* Blue button background color */
+  color: #fff; /* White button text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signUp-box button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.signUp-box p {
+  margin-top: 10px;
+  color: #333; /* Dark text color */
+}
+

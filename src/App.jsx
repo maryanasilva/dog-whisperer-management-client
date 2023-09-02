@@ -9,6 +9,8 @@ import ManagerPage from "./Pages/Manager";
 import UserPage from "./Pages/User";
 import IsAnon from "./Components/IsAnon";
 import IsPrivate from "./Components/IsPrivate";
+import KennelPage from "./Pages/KennelPage";
+import DogPage from "./Pages/DogPage";
 
 function App() {
   return (
@@ -48,6 +50,15 @@ function App() {
             </IsAnon>
           }
         />
+        <Route
+          path="/kennels"
+          element={
+            <KennelPage category="kennels" />}
+          />
+        <Route 
+          path="/kennels/:kennelId" 
+          element={
+            <DogPage />} />
       </Routes>
     </div>
   );

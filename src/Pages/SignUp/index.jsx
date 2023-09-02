@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -10,9 +9,6 @@ function SignUpPage(props) {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [userType, setUserType] = useState("");
-  // Default is false
-  /*     const [isKennelsManager, setIsKennelsManager] = useState(false); */
-
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
@@ -22,22 +18,13 @@ function SignUpPage(props) {
   };
 
   const handleSubmit = (e) => {
-    // prevent default actions
     e.preventDefault();
-
-    // create our request body object
     const requestBody = { name, email, password, userType };
 
-    // we send these infos to Backend
     axios
       .post(`${API_URL}/auth/signup`, requestBody)
-      .then((/* response */) => {
+      .then(() => {
         navigate("/login");
-        /*         if (isKennelsManager) {
-          navigate("/manager"); // Redirect to manager page
-        } else {
-          navigate("/user"); // Redirect to user page
-        } */
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -46,75 +33,76 @@ function SignUpPage(props) {
   };
 
   return (
-    <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:{" "}
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-        </label>
-
-        <label>
-          Password:{" "}
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-        </label>
-
-        <label>
-          Name:{" "}
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></input>
-        </label>
-
-        {/*         <label>
-          <input
-            type="checkbox"
-                        checked={isKennelsManager}
-            onChange={(e) => setIsKennelsManager(e.target.checked)}
-            onClick={handleUserType}
+    <div className="signUp-page">
+      <div className="background-video-container">
+        <video autoPlay muted loop className="background-video" preload="auto">
+          <source
+            src="https://player.vimeo.com/external/472956149.sd.mp4?s=79983d9557b4f122acda1f65f448cb69eeadef4e&profile_id=164&oauth2_token_id=57447761"
+            type="video/mp4"
           />
-          Are you a kennel manager?
-        </label> */}
+        </video>
+      </div>
 
-        <div>
-          <label htmlFor="userType">User Type</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            label="User"
-            value="User"
-            name="userType"
-            onClick={handleUserType}
-          />
-          <label htmlFor="user">User</label>
+      <div className="signUp-box">
+        <h1>Sign Up</h1>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
 
-          <input
-            type="radio"
-            label="Manager"
-            value="Manager"
-            name="userType"
-            onClick={handleUserType}
-          />
-          <label htmlFor="manager">Manager</label>
-        </div>
+          <label>
+            Password:
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
 
-        <button type="submit">Sign Up</button>
+          <label>
+            Name:
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+
+          <div>
+            <label htmlFor="userType">User Type</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              label="User"
+              value="User"
+              name="userType"
+              onClick={handleUserType}
+            />
+            <label htmlFor="user">User</label>
+
+            <input
+              type="radio"
+              label="Manager"
+              value="Manager"
+              name="userType"
+              onClick={handleUserType}
+            />
+            <label htmlFor="manager">Manager</label>
+          </div>
+
+          <button type="submit">Sign Up</button>
+        </form>
         {errorMessage && <p>{errorMessage}</p>}
-      </form>
+      </div>
     </div>
   );
 }
