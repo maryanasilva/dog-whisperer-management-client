@@ -47,9 +47,9 @@ function App() {
             <KennelPage category="kennels" />}
           />
         <Route 
-          path="/kennels/:kennelId" 
+          path="/dogs/:kennelId" 
           element={
-            <DogPage />} />
+            <DogPage category="dogs"/>} />
       </Routes>
     </div>
   );

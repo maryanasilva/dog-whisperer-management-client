@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-const API_BASE_URL = "http://localhost:5005";
+
+const API_URL = "http://localhost:5005";
 
 const DogPage = () => {
   const { kennelId } = useParams();
@@ -11,10 +12,10 @@ const DogPage = () => {
     console.log(`Fetching dogs for kennel with ID: ${kennelId}`);
     // Fetch dogs data for the specified kennel ID from the backend
     axios
-      .get(`${API_BASE_URL}/api/kennels/${kennelId}/dogs`)
+      .get(`${API_URL}/api/kennels/${kennelId}`) // Updated API endpoint
       .then((response) => {
         console.log("Dogs data response:", response.data);
-        setDogs(response.data);
+        setDogs(response.data.dogs);
       })
       .catch((error) => {
         console.error(`Error fetching dogs for kennel with ID ${kennelId}:`, error);
@@ -23,8 +24,9 @@ const DogPage = () => {
 
   return (
     <div className="kennel-dogs-page">
-      <h2>Dogs for Kennel ID: {kennelId}</h2>
-      <div className="dog-cards">
+      <h2>Dogs: </h2>
+      <div className="dog-cards" style={{ overflowY: "scroll", maxHeight: "400px" }}>
+        {/* Set a maximum height and enable vertical scrolling */}
         {dogs.map((dog) => (
           <div key={dog._id} className="dog-card">
             <img src={dog.image} alt={dog.name} />
@@ -41,3 +43,4 @@ const DogPage = () => {
 };
 
 export default DogPage;
+

@@ -1,45 +1,61 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-const API_BASE_URL = "http://localhost:5005";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+const API_BASE_URL = 'http://localhost:5005';
 
 const KennelPage = ({ category }) => {
   const [kennels, setKennels] = useState([]);
+  const [showAddKennelForm, setShowAddKennelForm] = useState(false);
 
   useEffect(() => {
     console.log(`Fetching kennels for category: ${category}`);
     // Fetch kennel data from the backend
-    axios.get(`${API_BASE_URL}/api/kennels`) // Update the URL here
+    axios
+      .get(`${API_BASE_URL}/api/kennels`)
       .then((response) => {
-        console.log("Kennel data response:", response.data);
+        console.log('Kennel data response:', response.data);
         setKennels(response.data);
       })
       .catch((error) => {
         console.error(`Error fetching ${category}:`, error);
       });
   }, [category]);
-  
+
+  const handleKennelAdded = (newKennel) => {
+    // Add the newly created kennel to the kennels list
+    setKennels([...kennels, newKennel]);
+    // Hide the Add Kennel form
+    setShowAddKennelForm(false);
+  };
 
   return (
     <div className="kennel-page">
       <video
-        autoPlay loop muted style={{
-          position: "fixed",
+        autoPlay
+        loop
+        muted
+        style={{
+          position: 'fixed',
           right: 0,
           bottom: 0,
-          minWidth: "100%",
-          minHeight: "100%",
+          minWidth: '100%',
+          minHeight: '100%',
           zIndex: -1,
         }}
-      >
-        <source
-          src="https://player.vimeo.com/external/205354774.sd.mp4?s=90ac603808b7b7ae0d1ca644afee9f53f0bc19b0&profile_id=164&oauth2_token_id=57447761"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
+        src= "https://player.vimeo.com/external/403883843.sd.mp4?s=fd15faff528e81dbb134e5ae16098c6d767ebd60&profile_id=164&oauth2_token_id=57447761"
+        >
       </video>
 
       <h2>Kennels</h2>
+
+      <button onClick={() => setShowAddKennelForm(!showAddKennelForm)}>
+        {showAddKennelForm ? 'Hide Add Kennel Form' : 'Add Kennel'}
+      </button>
+
+      {/* Conditionally render the AddKennel component */}
+      {showAddKennelForm && <AddKennel onKennelAdded={handleKennelAdded} />}
+
       <div className="kennel-cards">
         {kennels.map((kennel) => (
           <div key={kennel._id} className="kennel-card">

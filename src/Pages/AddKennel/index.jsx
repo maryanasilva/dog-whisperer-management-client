@@ -27,11 +27,14 @@ function AddKennel() {
     const requestBody = {name, description, location, image};
 
     axios.post(`${API_URL}/api/kennels`, requestBody)
-    .then(() => {
+    .then((response) => {
         setName("");
         setDescription("");
         setLocation("");
         setImage("");
+
+        // Notify the parent component (KennelPage) that a kennel has been added
+        onKennelAdded(response.data);
     })
     .catch((error) => console.log(error))
     }
