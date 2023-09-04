@@ -25,14 +25,6 @@ const LoginPage = () => {
         storeToken(response.data.authToken);
         authenticateUser();
         navigate("/profile");
-
-        /*         // Check if user is a kennel manager
-        if (response.data.payload.isKennelManager === true) {
-            navigate('/manager'); // Redirect to manager page
-        } else {
-            navigate('/user'); // Redirect to user page
-        }
- */
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -50,7 +42,9 @@ const LoginPage = () => {
         Your browser does not support the video tag.
       </video>
 
-      <div className="login-box"> {/* Wrap your form in a div with a class name */}
+      <div className="login-box">
+        {" "}
+        {/* Wrap your form in a div with a class name */}
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
           <label>Email:</label>
@@ -72,7 +66,6 @@ const LoginPage = () => {
           <button type="submit">Login</button>
         </form>
         {errorMessage && <p>{errorMessage}</p>}
-
         <Link to="/signup">
           <p>Don't have an account yet?</p>
         </Link>
