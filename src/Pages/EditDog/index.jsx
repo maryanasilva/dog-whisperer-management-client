@@ -1,26 +1,40 @@
-import { useState, useContext } from "react";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { AuthContext } from "../../Context/auth.context";
-import { useParams } from "react-router-dom";
+import KennelPage from "../KennelPage";
 
-const API_URL = "http://localhost:5005";
+const API_URL = 'http://localhost:5005';
 
-function AddDog() {
-  // State declaration
+function EditDogPage() {
+  const { dogId } = useParams();
+  const {kennelId} = useParams();
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [age, setAge] = useState("");
   const [genre, setGenre] = useState("");
   const [size, setSize] = useState("");
   const [image, setImage] = useState("");
-  const { kennelId } = useParams();
 
-  const storedToken = localStorage.getItem("authToken");
+  useEffect(() => {
+    axios.get(`${API_URL}/api/dogs/${dogId}`)
+      .then((response) => {
+        const oneDog = response.data;
+        setName(oneDog.name);
+        setDescription(oneDog.description);
+        setAge(oneDog.age);
+        setGenre(oneDog.genre);
+        setSize(oneDog.size);
+        setImage(oneDog.image);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [dogId]);
 
-  // Handle submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const requestBody = {
       name,
       age,
@@ -30,19 +44,13 @@ function AddDog() {
       image,
     };
 
-    axios
-      .post(`${API_URL}/api/${kennelId}/kennels`, requestBody, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+    axios.put(`${API_URL}/api/dogs/${dogId}`, requestBody)
       .then(() => {
-        setName("");
-        setDescription("");
-        setAge("");
-        setGenre("");
-        setSize("");
-        setImage("");
+        navigate(`/dogs/${kennelId}`); // Navigate to the dog's details page after editing
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const deleteDog = () => {
@@ -57,7 +65,7 @@ function AddDog() {
 
   return (
     <div>
-      <h2> Add New Dog</h2>
+      <h2>Edit Dog</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Name:
@@ -119,10 +127,12 @@ function AddDog() {
           />
         </label>
 
-        <button type="submit">Create a Dog</button>
+        <button type="submit">Edit</button>
       </form>
+
+      <button onClick={deleteDog}>Delete</button>
     </div>
   );
 }
 
-export default AddDog;
+export default EditDogPage;
