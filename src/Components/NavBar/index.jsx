@@ -1,32 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../Context/auth.context";
+import React from 'react';
+import {Link} from 'react-router-dom';
+import {useContext} from 'react'; 
+import { AuthContext } from '../../Context/auth.context';
 
 function Navbar() {
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const {isLoggedIn, user, logOutUser} = useContext(AuthContext);
 
   return (
-    <nav>
-      <div>
-          <Link to="/">
-              <button>Home</button>
-          </Link>
+    <nav className='navbar'>
+      <div className='navbar-left'>
+          <Link to="/"><button>Home</button></Link>
+          <Link to="/kennels"><button>Kennels</button></Link>
+          <Link to="/schools"><button>Schools</button></Link>
+          <Link to="/petCare"><button>Pet Care</button></Link>
       </div>
       
-      {isLoggedIn? (
-        <div>
-          <button onClick={logOutUser}>Logout</button>
-          <p>{user && user.name}</p>
-        </div>
-      ): 
-    (
-      <div>
-        <Link to="/signup"><button>Signup</button></Link>
-        <Link to="/login"><button>Login</button></Link>
+      <div className="navbar-right">
+        {isLoggedIn ? (
+          <>
+            <div className="user-info">
+              <p>{user && user.name}</p>
+            </div>
+            <button onClick={logOutUser}>Logout</button>
+          </>
+        ) : (
+          <>
+            <Link to="/signup"><button>Signup</button></Link>
+            <Link to="/login"><button>Login</button></Link>
+          </>
+        )}
       </div>
-    )
-  } 
     </nav>
   );
 }
