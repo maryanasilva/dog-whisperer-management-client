@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
@@ -18,14 +19,21 @@ const DogPage = () => {
         setDogs(response.data.dogs);
       })
       .catch((error) => {
-        console.error(`Error fetching dogs for kennel with ID ${kennelId}:`, error);
+        console.error(
+          `Error fetching dogs for kennel with ID ${kennelId}:`,
+          error
+        );
       });
   }, [kennelId]);
 
   return (
     <div className="kennel-dogs-page">
+      <Link to={`/kennels/${kennelId}/add-dog`}>Add Dog</Link>
       <h2>Dogs: </h2>
-      <div className="dog-cards" style={{ overflowY: "scroll", maxHeight: "400px" }}>
+      <div
+        className="dog-cards"
+        style={{ overflowY: "scroll", maxHeight: "400px" }}
+      >
         {/* Set a maximum height and enable vertical scrolling */}
         {dogs.map((dog) => (
           <div key={dog._id} className="dog-card">
@@ -43,4 +51,3 @@ const DogPage = () => {
 };
 
 export default DogPage;
-

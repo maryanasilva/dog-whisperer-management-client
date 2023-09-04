@@ -10,6 +10,7 @@ import IsAnon from "./Components/IsAnon";
 import IsPrivate from "./Components/IsPrivate";
 import KennelPage from "./Pages/KennelPage";
 import DogPage from "./Pages/DogPage";
+import AddDog from "./Pages/AddDog";
 
 function App() {
   return (
@@ -41,15 +42,9 @@ function App() {
             </IsAnon>
           }
         />
-        <Route
-          path="/kennels"
-          element={
-            <KennelPage category="kennels" />}
-          />
-        <Route 
-          path="/dogs/:kennelId" 
-          element={
-            <DogPage category="dogs"/>} />
+        <Route path="/kennels" element={<KennelPage category="kennels" />} />
+        <Route path="/dogs/:kennelId" element={<DogPage category="dogs" />} />
+        <Route path="/kennels/:kennelId/add-dog" element={<AddDog />} />
       </Routes>
     </div>
   );
