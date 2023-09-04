@@ -9,6 +9,7 @@ function SignUpPage(props) {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [userType, setUserType] = useState("");
+
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
@@ -33,76 +34,65 @@ function SignUpPage(props) {
   };
 
   return (
-    <div className="signUp-page">
-      <div className="background-video-container">
-        <video autoPlay muted loop className="background-video" preload="auto">
-          <source
-            src="https://player.vimeo.com/external/472956149.sd.mp4?s=79983d9557b4f122acda1f65f448cb69eeadef4e&profile_id=164&oauth2_token_id=57447761"
-            type="video/mp4"
+    <div>
+      <h1>Sign Up</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:{" "}
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></input>
+        </label>
+
+        <label>
+          Email:{" "}
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+        </label>
+
+        <label>
+          Password:{" "}
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          ></input>
+        </label>
+
+        <div>
+          <label htmlFor="userType">User Type</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            label="User"
+            value="User"
+            name="userType"
+            onClick={handleUserType}
           />
-        </video>
-      </div>
+          <label htmlFor="user">User</label>
 
-      <div className="signUp-box">
-        <h1>Sign Up</h1>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
+          <input
+            type="radio"
+            label="Manager"
+            value="Manager"
+            name="userType"
+            onClick={handleUserType}
+          />
+          <label htmlFor="manager">Manager</label>
+        </div>
 
-          <label>
-            Password:
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-
-          <div>
-            <label htmlFor="userType">User Type</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              label="User"
-              value="User"
-              name="userType"
-              onClick={handleUserType}
-            />
-            <label htmlFor="user">User</label>
-
-            <input
-              type="radio"
-              label="Manager"
-              value="Manager"
-              name="userType"
-              onClick={handleUserType}
-            />
-            <label htmlFor="manager">Manager</label>
-          </div>
-
-          <button type="submit">Sign Up</button>
-        </form>
-        {errorMessage && <p>{errorMessage}</p>}
-      </div>
+        <button type="submit">Sign Up</button>
+      </form>
+      {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
 }
