@@ -11,6 +11,7 @@ import IsPrivate from "./Components/IsPrivate";
 import KennelPage from "./Pages/KennelPage";
 import DogPage from "./Pages/DogPage";
 import AddDog from "./Pages/AddDog";
+import EditDogPage from "./Pages/EditDog";
 
 function App() {
   return (
@@ -42,9 +43,27 @@ function App() {
             </IsAnon>
           }
         />
-        <Route path="/kennels" element={<KennelPage category="kennels" />} />
-        <Route path="/dogs/:kennelId" element={<DogPage category="dogs" />} />
-        <Route path="/kennels/:kennelId/add-dog" element={<AddDog />} />
+        <Route 
+          path="/kennels" 
+          element={<KennelPage 
+          category="kennels" />} 
+        />
+
+        <Route 
+          path="/dogs/:kennelId" 
+          element={<DogPage 
+          category="dogs" />} 
+        />
+
+        <Route 
+          path="/kennels/:kennelId/add-dog" 
+          element={<AddDog />} 
+        />
+
+        <Route 
+          path="/kennels/:kennelId/edit-dog/:dogId" 
+          element={<EditDogPage />} 
+        />
       </Routes>
     </div>
   );
