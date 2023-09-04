@@ -32,6 +32,7 @@ function AddDog() {
 
     axios
       .post(`${API_URL}/api/${kennelId}/kennels`, requestBody, {
+        // check if there is an autentication/user
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then(() => {
