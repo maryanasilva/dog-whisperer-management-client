@@ -25,14 +25,6 @@ function LoginPage() {
         storeToken(response.data.authToken);
         authenticateUser();
         navigate("/profile");
-
-        /*         // Check if user is a kennel manager
-        if (response.data.payload.isKennelManager === true) {
-            navigate('/manager'); // Redirect to manager page
-        } else {
-            navigate('/user'); // Redirect to user page
-        }
- */
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;

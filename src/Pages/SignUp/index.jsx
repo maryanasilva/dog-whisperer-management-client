@@ -10,8 +10,6 @@ function SignUpPage(props) {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [userType, setUserType] = useState("");
-  // Default is false
-  /*     const [isKennelsManager, setIsKennelsManager] = useState(false); */
 
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -45,6 +43,16 @@ function SignUpPage(props) {
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <label>
+          Name:{" "}
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></input>
+        </label>
+
+        <label>
           Email:{" "}
           <input
             type="email"
@@ -63,26 +71,6 @@ function SignUpPage(props) {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </label>
-
-        <label>
-          Name:{" "}
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></input>
-        </label>
-
-        {/*         <label>
-          <input
-            type="checkbox"
-                        checked={isKennelsManager}
-            onChange={(e) => setIsKennelsManager(e.target.checked)}
-            onClick={handleUserType}
-          />
-          Are you a kennel manager?
-        </label> */}
 
         <div>
           <label htmlFor="userType">User Type</label>

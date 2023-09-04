@@ -17,7 +17,7 @@ function ProfilePage() {
       });
 
       setUser(response.data);
-      console.log(response.data);
+      //console.log(response.data);
 
       if (response.data.userType === "user") {
         setUser(true);
@@ -35,8 +35,13 @@ function ProfilePage() {
 
   return (
     <div>
-      <h1>Profile Page</h1>
-      {user && (
+      <h1>Hello {user.name}, this is your profile page</h1>
+      <div>
+        <p>{user.userType}</p>
+        <p>Name: {user.name}</p>
+        <p>Email: {user.email}</p>
+      </div>
+      {/*       {user && (
         <div>
           <p>USER: Name: {user.name}</p>
           <p>USER: Email: {user.email}</p>
@@ -49,7 +54,7 @@ function ProfilePage() {
           <p>MANAGER: Email: {user.email}</p>
           <p>MANAGER: UserType: {user.userType}</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
