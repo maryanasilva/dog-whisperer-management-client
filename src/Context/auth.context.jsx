@@ -6,13 +6,19 @@ const API_URL = "http://localhost:5005";
 const AuthContext = createContext();
 
 function AuthProvideWrapper(props) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [user, setUser] = useState(null);
 
-  const storeToken = (token) => {
-    localStorage.setItem("authToken", token);
-  };
+    const [isKennelManager, setIsKennelManager] = useState(false);
+
+   /* function storeToken(token) {
+        localStorage.setItem('authToken', token)
+    }    is the same as the const below*/
+    
+    const storeToken = (token) => {
+        localStorage.setItem('authToken', token);
+    }
 
   const authenticateUser = () => {
     const storedToken = localStorage.getItem("authToken");
@@ -53,21 +59,11 @@ function AuthProvideWrapper(props) {
     authenticateUser();
   }, []);
 
-  return (
-    <AuthContext.Provider
-      value={{
-        isLoggedIn,
-        isLoading,
-        user,
-        storeToken,
-        authenticateUser,
-        removeToken,
-        logOutUser,
-      }}
-    >
-      {props.children}
-    </AuthContext.Provider>
-  );
+    return (
+        <AuthContext.Provider value={{isLoggedIn, isLoading, user, storeToken, authenticateUser, removeToken, logOutUser, isKennelManager}}>
+            {props.children}
+        </AuthContext.Provider>
+    )
 }
 
 export { AuthProvideWrapper, AuthContext };

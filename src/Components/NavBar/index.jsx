@@ -9,29 +9,24 @@ function Navbar() {
   return (
     <nav>
       <div>
-        <Link to="/">
-          <button>Home</button>
-        </Link>
+          <Link to="/">
+              <button>Home</button>
+          </Link>
       </div>
-
-      {isLoggedIn ? (
+      
+      {isLoggedIn? (
         <div>
           <button onClick={logOutUser}>Logout</button>
-          <Link to="/profile">
-            <button>Profile</button>
-          </Link>
           <p>{user && user.name}</p>
         </div>
-      ) : (
-        <div>
-          <Link to="/signup">
-            <button>Signup</button>
-          </Link>
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
-        </div>
-      )}
+      ): 
+    (
+      <div>
+        <Link to="/signup"><button>Signup</button></Link>
+        <Link to="/login"><button>Login</button></Link>
+      </div>
+    )
+  } 
     </nav>
   );
 }

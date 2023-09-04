@@ -12,14 +12,14 @@ function AddKennel() {
     const [image, setImage] = useState("");
 
     // Get the user's manager status from the contex
-    const { isKennelManager } = useContext(AuthContext); 
+    const { IsKennelsManager } = useContext(AuthContext); 
     
     // Handle submit form
     const handleSubmit = (e) => {
         e.preventDefault();
 
     // Check if the user is a manager before allowing kennel creation
-    if (!isKennelManager) {
+    if (!IsKennelsManager) {
         console.log("Only managers can add kennels.");
         return;
     }

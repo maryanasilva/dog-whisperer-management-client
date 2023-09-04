@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -10,6 +9,8 @@ function SignUpPage(props) {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [userType, setUserType] = useState("");
+  // Default is false
+  /*     const [isKennelsManager, setIsKennelsManager] = useState(false); */
 
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -20,13 +21,9 @@ function SignUpPage(props) {
   };
 
   const handleSubmit = (e) => {
-    // prevent default actions
     e.preventDefault();
-
-    // create our request body object
     const requestBody = { name, email, password, userType };
 
-    // we send these infos to Backend
     axios
       .post(`${API_URL}/auth/signup`, requestBody)
       .then(() => {
@@ -42,16 +39,6 @@ function SignUpPage(props) {
     <div>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:{" "}
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></input>
-        </label>
-
         <label>
           Email:{" "}
           <input
@@ -72,32 +59,53 @@ function SignUpPage(props) {
           ></input>
         </label>
 
-        <div>
-          <label htmlFor="userType">User Type</label>
-        </div>
-        <div>
+        <label>
+          Name:{" "}
           <input
-            type="radio"
-            label="User"
-            value="User"
-            name="userType"
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></input>
+        </label>
+
+        {/*         <label>
+          <input
+            type="checkbox"
+                        checked={isKennelsManager}
+            onChange={(e) => setIsKennelsManager(e.target.checked)}
             onClick={handleUserType}
           />
-          <label htmlFor="user">User</label>
+          Are you a kennel manager?
+        </label> */}
 
-          <input
-            type="radio"
-            label="Manager"
-            value="Manager"
-            name="userType"
-            onClick={handleUserType}
-          />
-          <label htmlFor="manager">Manager</label>
-        </div>
+          <div>
+            <label htmlFor="userType">User Type</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              label="User"
+              value="User"
+              name="userType"
+              onClick={handleUserType}
+            />
+            <label htmlFor="user">User</label>
 
-        <button type="submit">Sign Up</button>
+            <input
+              type="radio"
+              label="Manager"
+              value="Manager"
+              name="userType"
+              onClick={handleUserType}
+            />
+            <label htmlFor="manager">Manager</label>
+          </div>
+
+          <button type="submit">Sign Up</button>
+        </form>
         {errorMessage && <p>{errorMessage}</p>}
-      </form>
+      </div>
     </div>
   );
 }
