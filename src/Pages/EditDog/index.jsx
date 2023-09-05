@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import KennelPage from "../KennelPage";
 
-const API_URL = 'http://localhost:5005';
+const API_URL = "http://localhost:5005";
 
 function EditDogPage() {
-  const { dogId } = useParams();
-  const {kennelId} = useParams();
+  const { dogId, kennelId } = useParams();
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -17,8 +15,12 @@ function EditDogPage() {
   const [size, setSize] = useState("");
   const [image, setImage] = useState("");
 
+  //console.log("dog id", dogId);
+  //console.log("kennel", kennelId);
+
   useEffect(() => {
-    axios.get(`${API_URL}/api/dogs/${dogId}`)
+    axios
+      .get(`${API_URL}/api/singledog/${dogId}`)
       .then((response) => {
         const oneDog = response.data;
         setName(oneDog.name);
@@ -44,24 +46,27 @@ function EditDogPage() {
       image,
     };
 
-    axios.put(`${API_URL}/api/dogs/${dogId}`, requestBody)
+    axios
+      .put(`${API_URL}/api/dogs/${dogId}`, requestBody)
       .then(() => {
-        navigate(`/dogs/${kennelId}`); // Navigate to the dog's details page after editing
+        // Navigate to the dog's details page after editing
+        navigate(`/profile`);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const deleteDog = () => {
-    axios.delete(`${API_URL}/api/dogs/${dogId}`)
+  /*   const deleteDog = () => {
+    axios
+      .delete(`${API_URL}/api/dogs/${dogId}`)
       .then(() => {
-        navigate('/'); // Navigate to the home page after deleting
+        navigate("/"); // Navigate to the home page after deleting
       })
       .catch((error) => {
         console.log(error);
       });
-  };
+  }; */
 
   return (
     <div>
@@ -130,7 +135,7 @@ function EditDogPage() {
         <button type="submit">Edit</button>
       </form>
 
-      <button onClick={deleteDog}>Delete</button>
+      {/*       <button onClick={deleteDog}>Delete</button> */}
     </div>
   );
 }

@@ -1,12 +1,14 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../Context/auth.context";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
 function AddDog() {
   // State declaration
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [age, setAge] = useState("");
@@ -32,7 +34,7 @@ function AddDog() {
 
     axios
       .post(`${API_URL}/api/${kennelId}/kennels`, requestBody, {
-        // check if there is an autentication/user
+        // check if there is an authentication/user
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then(() => {
@@ -42,18 +44,9 @@ function AddDog() {
         setGenre("");
         setSize("");
         setImage("");
+        navigate(`/dogs/${kennelId}`);
       })
       .catch((error) => console.log(error));
-  };
-
-  const deleteDog = () => {
-    axios.delete(`${API_URL}/api/dogs/${dogId}`)
-      .then(() => {
-        navigate('/'); // Navigate to the home page after deleting
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
   return (
