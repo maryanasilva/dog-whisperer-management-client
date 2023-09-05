@@ -9,6 +9,7 @@ import ProfilePage from "./Pages/Profile";
 import IsAnon from "./Components/IsAnon";
 import IsPrivate from "./Components/IsPrivate";
 import KennelPage from "./Pages/KennelPage";
+import AddKennel from "./Pages/AddKennel";
 import DogPage from "./Pages/DogPage";
 import AddDog from "./Pages/AddDog";
 import EditDogPage from "./Pages/EditDog";
@@ -43,31 +44,25 @@ function App() {
             </IsAnon>
           }
         />
-        <Route 
-          path="/kennels" 
-          element={<KennelPage 
-          category="kennels" />} 
+        <Route path="/kennels" element={<KennelPage category="kennels" />} />
+
+        <Route path="/kennels/:kennelId/add-kennel" element={<AddKennel />} />
+
+        <Route path="/dogs/:kennelId" element={<DogPage category="dogs" />} />
+
+        <Route
+          path="/kennels/:kennelId/add-dog"
+          element={
+            <IsPrivate>
+              <AddDog />
+            </IsPrivate>
+          }
         />
 
-        <Route 
-          path="/dogs/:kennelId" 
-          element={<DogPage 
-          category="dogs" />} 
+        <Route
+          path="/kennels/:kennelId/edit-dog/:dogId"
+          element={<EditDogPage />}
         />
-
-        <Route 
-          path="/kennels/:kennelId/add-dog" 
-          element={<AddDog />} 
-        />
-
-        <Route 
-          path="/kennels/:kennelId/edit-dog/:dogId" 
-          element={<EditDogPage />} 
-        />
-
-        <Route 
-          path="/profile" 
-          element={<IsPrivate><ProfilePage /></IsPrivate>} />
       </Routes>
     </div>
   );

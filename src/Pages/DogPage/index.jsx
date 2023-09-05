@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
@@ -18,22 +19,10 @@ const DogPage = () => {
         setDogs(response.data.dogs);
       })
       .catch((error) => {
-        console.error(`Error fetching dogs for kennel with ID ${kennelId}`, error);
+        console.error(
+          `Error fetching dogs for kennel with ID ${kennelId}`,error);
       });
   }, [kennelId]);
-
-  const deleteDog = (dogId) => {
-    // Send an API request to delete the dog by ID
-    axios
-      .delete(`${API_URL}/api/dogs/${dogId}`)
-      .then(() => {
-        // Remove the deleted dog from the state
-        setDogs((prevDogs) => prevDogs.filter((dog) => dog._id !== dogId));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   return (
     <div className="dog-page">
@@ -54,12 +43,10 @@ const DogPage = () => {
             <p>Genre: {dog.genre}</p>
             <p>Size: {dog.size}</p>
             <p>Description: {dog.description}</p>
-            <div className="dog-buttons">
-              <Link to={`/kennels/${kennelId}/edit-dog/${dog._id}`}>
-                <button className="edit-button">Edit</button>
-              </Link>
-              <button onClick={() => deleteDog(dog._id)}>Delete</button>
-            </div>
+            <Link to={`/kennels/${kennelId}/edit-dog/${dog._id}`}>
+              <button className="edit-button">Edit</button>
+            </Link>
+            <button onClick={() => deleteDog(dog._id)}>Delete</button>
           </div>
         ))}
       </div>

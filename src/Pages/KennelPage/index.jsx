@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import AddKennel from "../AddKennel";
 
-const API_BASE_URL = 'http://localhost:5005';
+const API_URL = "http://localhost:5005";
 
 const KennelPage = ({ category }) => {
   const [kennels, setKennels] = useState([]);
@@ -12,9 +13,9 @@ const KennelPage = ({ category }) => {
     console.log(`Fetching kennels for category: ${category}`);
     // Fetch kennel data from the backend
     axios
-      .get(`${API_BASE_URL}/api/kennels`)
+      .get(`${API_URL}/api/kennels`)
       .then((response) => {
-        console.log('Kennel data response:', response.data);
+        console.log("Kennel data response:", response.data);
         setKennels(response.data);
       })
       .catch((error) => {
@@ -31,12 +32,27 @@ const KennelPage = ({ category }) => {
 
   return (
     <div className="kennel-page">
-      <div className="kennel-header">
-        <h2>Explore Kennels</h2>
-        <button onClick={() => setShowAddKennelForm(!showAddKennelForm)}>
-          {showAddKennelForm ? 'Hide Add Kennel Form' : 'Add Kennel'}
-        </button>
-      </div>
+      <video
+        autoPlay
+        loop
+        muted
+        style={{
+          position: 'fixed',
+          right: 0,
+          bottom: 0,
+          minWidth: '100%',
+          minHeight: '100%',
+          zIndex: -1,
+        }}
+        src= "https://player.vimeo.com/external/403883843.sd.mp4?s=fd15faff528e81dbb134e5ae16098c6d767ebd60&profile_id=164&oauth2_token_id=57447761"
+        >
+      </video>
+
+      <h2>Kennels</h2>
+
+      <button onClick={() => setShowAddKennelForm(!showAddKennelForm)}>
+        {showAddKennelForm ? 'Hide Add Kennel Form' : 'Add Kennel'}
+      </button>
 
       {showAddKennelForm && <AddKennel onKennelAdded={handleKennelAdded} />}
 
