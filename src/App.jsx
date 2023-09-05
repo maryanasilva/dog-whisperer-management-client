@@ -46,14 +46,7 @@ function App() {
         />
         <Route path="/kennels" element={<KennelPage category="kennels" />} />
 
-        <Route
-          path="/kennels/:kennelId/add-kennel"
-          element={
-            <IsPrivate>
-              <AddKennel />
-            </IsPrivate>
-          }
-        />
+        <Route path="/kennels/:kennelId/add-kennel" element={<AddKennel />} />
 
         <Route path="/dogs/:kennelId" element={<DogPage category="dogs" />} />
 
@@ -70,10 +63,6 @@ function App() {
           path="/kennels/:kennelId/edit-dog/:dogId"
           element={<EditDogPage />}
         />
-
-        <Route 
-          path="/profile" 
-          element={<IsPrivate><ProfilePage /></IsPrivate>} />
       </Routes>
     </div>
   );
