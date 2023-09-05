@@ -34,7 +34,16 @@ function SignUpPage(props) {
   };
 
   return (
-    <div className="">
+    <div className="signUp-page"> 
+      <video autoPlay muted loop className="background-video" preload="auto">
+        <source
+          src="https://player.vimeo.com/external/325793715.sd.mp4?s=30a8fc34cd7dfc09a3c06651d9325c015cbfd3d8&profile_id=164&oauth2_token_id=57447761"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+
+    <div className="signUp-box">
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -94,6 +103,7 @@ function SignUpPage(props) {
       </form>
       {errorMessage && <p>{errorMessage}</p>}
     </div>
+  </div>
   );
 }
 

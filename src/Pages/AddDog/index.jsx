@@ -56,12 +56,13 @@ function AddDog() {
   };
 
   return (
-    <div>
-      <h2> Add New Dog</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <div className="add-dog-container">
+      <h2 className="add-dog-title">Add New Dog</h2>
+      <form className="add-dog-form" onSubmit={handleSubmit}>
+        <label className="add-dog-label">
           Name:
           <input
+            className="add-dog-input"
             type="text"
             name="name"
             value={name}
@@ -69,9 +70,10 @@ function AddDog() {
           />
         </label>
 
-        <label>
+        <label className="add-dog-label">
           Description:
           <input
+            className="add-dog-input"
             type="text"
             name="description"
             value={description}
@@ -79,9 +81,10 @@ function AddDog() {
           />
         </label>
 
-        <label>
+        <label className="add-dog-label">
           Age:
           <input
+            className="add-dog-input"
             type="text"
             name="age"
             value={age}
@@ -89,9 +92,10 @@ function AddDog() {
           />
         </label>
 
-        <label>
+        <label className="add-dog-label">
           Genre:
           <input
+            className="add-dog-input"
             type="text"
             name="genre"
             value={genre}
@@ -99,9 +103,10 @@ function AddDog() {
           />
         </label>
 
-        <label>
+        <label className="add-dog-label">
           Size:
           <input
+            className="add-dog-input"
             type="text"
             name="size"
             value={size}
@@ -109,9 +114,10 @@ function AddDog() {
           />
         </label>
 
-        <label>
+        <label className="add-dog-label">
           Image:
           <input
+            className="add-dog-input"
             type="text"
             name="image"
             value={image}
@@ -119,7 +125,7 @@ function AddDog() {
           />
         </label>
 
-        <button type="submit">Create a Dog</button>
+        <button className="add-dog-button" type="submit">Create a Dog</button>
       </form>
     </div>
   );

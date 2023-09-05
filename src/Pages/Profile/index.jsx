@@ -17,7 +17,6 @@ function ProfilePage() {
       });
 
       setUser(response.data);
-      //console.log(response.data);
 
       if (response.data.userType === "user") {
         setUser(true);
@@ -34,27 +33,13 @@ function ProfilePage() {
   }, []);
 
   return (
-    <div>
-      <h1>Hello {user.name}, this is your profile page</h1>
-      <div>
-        <p>{user.userType}</p>
-        <p>Name: {user.name}</p>
-        <p>Email: {user.email}</p>
+    <div className="profile-container">
+      <h1 className="profile-title">Hello {user.name}, this is your profile page</h1>
+      <div className="profile-info">
+        <p className="profile-item">Title: {user.userType}</p>
+        <p className="profile-item">Name: {user.name}</p>
+        <p className="profile-item">Email: {user.email}</p>
       </div>
-      {/*       {user && (
-        <div>
-          <p>USER: Name: {user.name}</p>
-          <p>USER: Email: {user.email}</p>
-          <p>USER: UserType: {user.userType}</p>
-        </div>
-      )}
-      {manager && (
-        <div>
-          <p>MANAGER: Name: {user.name}</p>
-          <p>MANAGER: Email: {user.email}</p>
-          <p>MANAGER: UserType: {user.userType}</p>
-        </div>
-      )} */}
     </div>
   );
 }
