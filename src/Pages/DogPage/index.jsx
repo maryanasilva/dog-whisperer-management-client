@@ -41,7 +41,9 @@ const DogPage = () => {
         <Link to={`/kennels/${kennelId}/add-dog`} className="add-dog-link">
           Add Dog
         </Link>
-        <h2>Dogs:</h2>
+        <Link to={`/kennels`} className="add-dog-link">
+          back
+        </Link>
       </div>
       <div className="dog-cards">
         {dogs.map((dog) => (

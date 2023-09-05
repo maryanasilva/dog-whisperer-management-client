@@ -75,27 +75,16 @@
   background-color: #0056b3;
 }
 
-
-/* Hide the scroll bar */
-.kennel-cards::-webkit-scrollbar {
-  width: 0.5em;
-}
-
-.kennel-cards::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.kennel-cards::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  outline: none;
-}
-
 /* LoginPage */
+.login-page {
+  margin-top: 10px;
+}
+
 .login-box {
   background-color: rgba(245, 245, 245, 0.8); /* Semi-transparent light gray background */
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
@@ -105,6 +94,7 @@
 
 .login-box form {
   margin-top: 20px;
+  color: #333;
 }
 
 .login-box label {
@@ -142,7 +132,7 @@
 
 /* SignUpPage */
 .signUp-page {
-  margin-top: 90px;
+  margin-top: 100px;
 }
 
 .signUp-box {
@@ -159,6 +149,7 @@
 
 .signUp-box form {
   margin-top: 20px;
+  color: #333;
 }
 
 .signUp-box label {
@@ -198,7 +189,7 @@
 /* DogPage */
 .dog-page {
   padding: 20px;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .dog-header {
@@ -392,7 +383,6 @@
 .add-dog-button:hover {
   background-color: #0056b3;
 }
-
 
 /* ProfilePage */
 .profile-container {
