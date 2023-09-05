@@ -19,7 +19,8 @@ function Navbar() {
         {isLoggedIn ? (
           <>
             <div className="user-info">
-              <p>{user && user.name}</p>
+              
+              <Link to="/profile">{user && user.name}</Link>
             </div>
             <button onClick={logOutUser}>Logout</button>
           </>

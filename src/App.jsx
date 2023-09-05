@@ -70,6 +70,10 @@ function App() {
           path="/kennels/:kennelId/edit-dog/:dogId"
           element={<EditDogPage />}
         />
+
+        <Route 
+          path="/profile" 
+          element={<IsPrivate><ProfilePage /></IsPrivate>} />
       </Routes>
     </div>
   );

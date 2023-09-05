@@ -1,26 +1,14 @@
 /* HomePage.css */
 
 body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+  margin: 10px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #242424; /* Set the background color of the entire page */
-}
-
-.background-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* This will maintain the aspect ratio and cover the entire viewport */
-  position: absolute; /* Absolute positioning to cover the entire body */
-  top: 0;
-  left: 0;
-  padding: 0 10;
-  z-index: -1; /* Send the video to the background */
+  background-color: #474747; /* Set the background color of the entire page */
 }
 
 .content {
@@ -57,33 +45,11 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
+/*
 @media (prefers-color-scheme: light) {
   body {
-    background-color: #ffffff; /* Set the background color for light mode */
-  }
-
-  /* Adjust button color for light mode */
-  button {
-    background-color: #f9f9f9;
-    color: #747bff;
-  }
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed; /* Fix the navbar at the top */
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #000; /* Set the background color to dark */
-  padding: 10px 20px;
-  color: #FFFFFF;
-  z-index: 1000;
-  width: 100%; /* Make the navbar full-width */
-}
+    background-color: #ffffff; /* Set the background color for light mode
+  } */
 
 /* Add some spacing for the content below the navbar */
 .content {
@@ -104,11 +70,6 @@ button:focus-visible {
   z-index: 1000;
   width: 100%; /* Make the navbar full-width */
   height: 60px; /* Set a fixed height for the navbar */
-}
-
-/* Add some spacing for the content below the navbar */
-.content {
-  margin-top: 70px; /* Adjust this value as needed */
 }
 
 .navbar button {
@@ -141,3 +102,72 @@ button:focus-visible {
 .navbar-right p {
   margin-right: 40px; /* Reduce margin for user info to align with buttons */
 }
+
+/* Carousel styles */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  max-height: 500px; /* Set the maximum height of the carousel */
+}
+
+.carousel-item {
+  display: none;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel-item.active {
+  display: block;
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  display: block; /* Remove any default inline styling */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the background color and opacity as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.carousel-item.active .carousel-overlay {
+  opacity: 1;
+}
+
+.carousel-text {
+  color: white; 
+  font-size: 24px;
+  text-align: center;
+  padding: 20px;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.carousel-button.left {
+  left: 10px;
+}
+
+.carousel-button.right {
+  right: 10px;
+}
+

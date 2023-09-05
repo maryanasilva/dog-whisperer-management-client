@@ -43,8 +43,6 @@ const LoginPage = () => {
       </video>
 
       <div className="login-box">
-        {" "}
-        {/* Wrap your form in a div with a class name */}
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
           <label>Email:</label>
