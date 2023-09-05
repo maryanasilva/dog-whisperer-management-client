@@ -13,40 +13,35 @@ const DogPage = () => {
     console.log(`Fetching dogs for kennel with ID: ${kennelId}`);
     // Fetch dogs data for the specified kennel ID from the backend
     axios
-      .get(`${API_URL}/api/kennels/${kennelId}`)
+      .get(`${API_URL}/api/kennels/${kennelId}`) // Updated API endpoint
       .then((response) => {
         console.log("Dogs data response:", response.data);
         setDogs(response.data.dogs);
       })
       .catch((error) => {
         console.error(
-          `Error fetching dogs for kennel with ID ${kennelId}`,error);
+          `Error fetching dogs for kennel with ID ${kennelId}`,
+          error
+        );
       });
   }, [kennelId]);
 
   return (
-    <div className="dog-page">
-      <div className="dog-header">
-        <Link to={`/kennels/${kennelId}/add-dog`} className="add-dog-link">
-          Add Dog
-        </Link>
-        <Link to={`/kennels`} className="add-dog-link">
-          back
-        </Link>
-      </div>
-      <div className="dog-cards">
+    <div className="kennel-dogs-page">
+      <Link to={`/kennels/${kennelId}/add-dog`}>Add Dog</Link>
+      <h2>Dogs: </h2>
+      <div
+        className="dog-cards"
+        style={{ overflowY: "scroll", maxHeight: "400px" }}
+      >
         {dogs.map((dog) => (
           <div key={dog._id} className="dog-card">
             <img src={dog.image} alt={dog.name} />
             <h3>Name: {dog.name}</h3>
-            <p>Age: {dog.age}</p>
-            <p>Genre: {dog.genre}</p>
-            <p>Size: {dog.size}</p>
+            <h3>Age: {dog.age}</h3>
+            <h3>Genre: {dog.genre}</h3>
+            <h3>Size: {dog.size}</h3>
             <p>Description: {dog.description}</p>
-            <Link to={`/kennels/${kennelId}/edit-dog/${dog._id}`}>
-              <button className="edit-button">Edit</button>
-            </Link>
-            <button onClick={() => deleteDog(dog._id)}>Delete</button>
           </div>
         ))}
       </div>
