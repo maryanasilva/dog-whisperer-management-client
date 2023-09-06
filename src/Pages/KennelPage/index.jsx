@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AddKennel from "../AddKennel";
 import { Button } from "@mui/material";
 
-const API_URL = "https://dog-whisperer.onrender.com";
+const API_URL = "http://localhost:5005";
 
 const KennelPage = ({ category }) => {
   const [kennels, setKennels] = useState([]);
@@ -56,21 +56,6 @@ const KennelPage = ({ category }) => {
 
   return (
     <div className="kennel-page">
-      <video
-        autoPlay
-        loop
-        muted
-        style={{
-          position: "fixed",
-          right: 0,
-          bottom: 0,
-          minWidth: "100%",
-          minHeight: "100%",
-          zIndex: -1,
-        }}
-        src="https://player.vimeo.com/external/403883843.sd.mp4?s=fd15faff528e81dbb134e5ae16098c6d767ebd60&profile_id=164&oauth2_token_id=57447761"
-      ></video>
-
       <h2>Kennels</h2>
 
       {/* <button onClick={() => setShowAddKennelForm(!showAddKennelForm)}>

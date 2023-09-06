@@ -3,7 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../../Context/auth.context";
 import { useParams, useNavigate } from "react-router-dom";
 
-const API_URL = "https://dog-whisperer.onrender.com";
+const API_URL = "http://localhost:5005"
 
 function AddDog() {
   // State declaration
