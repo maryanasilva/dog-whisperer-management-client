@@ -50,7 +50,7 @@ function App() {
         />
 
         <Route 
-          path="/kennels/:kennelId/add-kennel" 
+          path="/kennels/add-kennel" 
           element={<AddKennel />} 
         />
 

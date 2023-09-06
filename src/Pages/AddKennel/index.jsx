@@ -14,45 +14,69 @@ function AddKennel() {
   const [location, setLocation] = useState("");
   const [image, setImage] = useState("");
   const [manager, setManager] = useState("");
+  const [user, setUser] = useState("");
   const { kennelId } = useParams();
 
-/*     // Get the user's manager status from the contex
-  const { autenticateUSer, manager } = useContext(AuthContext); */
+  // Get the user's manager status from the context
+  const { autenticateUser } = useContext(AuthContext);
+  const [showAddKennelForm, setShowAddKennelForm] = useState(false);
 
   // Handle submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const storedToken = localStorage.getItem("authToken");
-  
+
       let response = await axios.get(`${API_URL}/api/profile`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
-  
+
       if (response.data.userType === "manager") {
-        // Only managers can create kennels
-        const requestBody = { name, description, location, image };
-  
-        axios
-          .post(`${API_URL}/api/kennels/add-kennels`, requestBody)
-          .then(() => {
-            setName("");
-            setDescription("");
-            setLocation("");
-            setImage("");
-            navigate(`/kennels`);
-          })
-          .catch((error) => console.log(error));
+        setManager(true);
+        setShowAddKennelForm(true);
       } else {
-        console.log("Only managers can add kennels.");
+        setUser(true);
+        console.log(response);
       }
     } catch (error) {
       console.log(error);
     }
+
+    /*     // Check if the user is a manager before allowing kennel creation
+    if (!manager) {
+      console.log("Only managers can add kennels.");
+      return;
+    } */
+
+    const requestBody = { name, description, location, image };
+
+    axios
+      .post(`${API_URL}/api/kennels/add-kennels`, requestBody)
+      .then(() => {
+        setName("");
+        setDescription("");
+        setLocation("");
+        setImage("");
+        navigate(`/kennels`);
+
+        // Notify the parent component (KennelPage) that a kennel has been added
+        oneKennelAdded(response.data);
+      })
+      .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    autenticateUser();
+  }, []);
 
   return (
     <div>
+      <button onClick={() => setShowAddKennelForm(!showAddKennelForm)}>
+        {showAddKennelForm ? "Hide Add Kennel Form" : "Add Kennel"}
+      </button>
+
+      {showAddKennelForm && <AddKennel onKennelAdded={handleKennelAdded} />}
+
       <form onSubmit={handleSubmit}>
         <label>
           Name:
