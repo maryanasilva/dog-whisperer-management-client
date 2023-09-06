@@ -187,74 +187,90 @@
 }
 
 /* DogPage */
-.dog-page {
+.profile-container {
+  text-align: center;
   padding: 20px;
-  margin-top: 60px;
+  background-color: #f8f8f8;
 }
 
-.dog-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+.profile-header {
+  margin-top: 100px;
 }
 
-.add-dog-link {
-  text-decoration: none;
-  padding: 10px 20px;
-  background-color: #4caf50; /* Green background color */
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #3498db;
+}
+
+.profile-header h1 {
+  font-size: 28px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.profile-header p {
   font-size: 18px;
-}
-
-.add-dog-link:hover {
-  background-color: #45a049; /* Darker green on hover */
+  color: #666;
 }
 
 .dog-cards {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .dog-card {
-  background-color: #fff; /* White background color */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: calc(33.33% - 20px);
-  box-sizing: border-box;
-  transition: transform 0.2s;
-}
-
-.dog-card:hover {
-  transform: scale(1.05); /* Enlarge the card on hover */
+  text-align: left;
+  width: 300px;
 }
 
 .dog-card img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-  border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
-.edit-button {
-  background-color: #2196f3; /* Blue background color */
+.dog-card h3 {
+  font-size: 20px;
+  margin: 0;
+  color: #3498db;
+  margin-top: 10px;
+}
+
+.dog-card p {
+  font-size: 16px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.edit-button,
+button {
+  background-color: #3498db;
   color: #fff;
   border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-top: 10px;
   cursor: pointer;
-  margin-right: 10px;
-  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-.edit-button:hover {
-  background-color: #0b7dda; 
+.edit-button:hover,
+button:hover {
+  background-color: #2969b0;
 }
+
 
 /* EditDogPage */
 .edit-dog-container {

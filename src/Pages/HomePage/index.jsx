@@ -106,11 +106,11 @@ function HomePage() {
         </div>
         <div className="service-circle">
           <img src="https://images.pexels.com/photos/2295236/pexels-photo-2295236.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Manager" />
-          <p>SignUp as manager to add your kennel</p>
+          <p>SignUp as Manager to add your kennel</p>
         </div>
         <div className='service-circle'>
         <img src="https://images.pexels.com/photos/1629777/pexels-photo-1629777.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="User" />
-          <p>SignUp as login to add your dog</p>
+          <p>SignUp as User to add your dog</p>
         </div>
       </div>
     </div>

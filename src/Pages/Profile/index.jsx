@@ -5,9 +5,11 @@ import { useParams, Link } from "react-router-dom";
 const API_URL = "http://localhost:5005";
 
 function ProfilePage() {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(null);
   const [manager, setManager] = useState(false);
   const [dogs, setDogs] = useState([]);
+  const [adoptionRequests, setAdoptionRequests] = useState([]);
+  const [kennelNames, setKennelNames] = useState({});
 
   const getUser = async () => {
     try {
@@ -18,14 +20,26 @@ function ProfilePage() {
       });
 
       setUser(response.data);
-      console.log(response.data);
       setDogs(response.data.ownedDogs);
+      setAdoptionRequests(response.data.adoptionRequests);
 
       if (response.data.userType === "user") {
-        setUser(true);
+        setManager(false);
       } else {
         setManager(true);
       }
+
+      // Fetch kennel names for each dog
+      const kennelNamesPromises = response.data.ownedDogs.map(async (dog) => {
+        const kennelResponse = await axios.get(
+          `${API_URL}/api/kennels/${dog.kennel}`
+        );
+        return { [dog._id]: kennelResponse.data.name }; // Store the kennel name with dog ID as key
+      });
+
+      const kennelNameMappings = await Promise.all(kennelNamesPromises);
+      const kennelNameObject = Object.assign({}, ...kennelNameMappings);
+      setKennelNames(kennelNameObject);
     } catch (error) {
       console.log(error);
     }
@@ -50,11 +64,11 @@ function ProfilePage() {
 
   return (
     <div>
-      <h1>Hello {user.name}, this is your profile page</h1>
+      <h1>Hello {user ? user.name : "User"}, this is your profile page</h1>
       <div>
-        <p>{user.userType}</p>
-        <p>Name: {user.name}</p>
-        <p>Email: {user.email}</p>
+        <p>{user && user.userType}</p>
+        <p>Name: {user && user.name}</p>
+        <p>Email: {user && user.email}</p>
       </div>
       <div
         className="dog-cards"
@@ -70,6 +84,7 @@ function ProfilePage() {
               <h3>Genre: {dog.genre}</h3>
               <h3>Size: {dog.size}</h3>
               <p>Description: {dog.description}</p>
+              <p>Kennel: {kennelNames[dog._id]}</p>
               <Link to={`/kennels/${dog.kennel}/edit-dog/${dog._id}`}>
                 <button className="edit-button">Edit</button>
               </Link>
@@ -77,6 +92,28 @@ function ProfilePage() {
             </div>
           ))}
       </div>
+
+      {/* Conditionally render the adoption requests */}
+      {user && user.userType === "user" && (
+        <div>
+          <h2>Your Adoption Requests</h2>
+          <ul>
+            {adoptionRequests.map((request) => (
+              <li key={request._id}>
+                Dog: {request.dog.name}, Status: {request.status}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Conditionally render the manager approval section */}
+      {manager && (
+        <div>
+          <h2>Manager Approval Section</h2>
+          {/* Include the manager approval UI or functionality here */}
+        </div>
+      )}
     </div>
   );
 }

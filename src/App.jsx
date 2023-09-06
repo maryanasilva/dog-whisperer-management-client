@@ -44,11 +44,20 @@ function App() {
             </IsAnon>
           }
         />
-        <Route path="/kennels" element={<KennelPage category="kennels" />} />
+        <Route 
+          path="/kennels" 
+          element={<KennelPage category="kennels" />} 
+        />
 
-        <Route path="/kennels/:kennelId/add-kennel" element={<AddKennel />} />
+        <Route 
+          path="/kennels/:kennelId/add-kennel" 
+          element={<AddKennel />} 
+        />
 
-        <Route path="/dogs/:kennelId" element={<DogPage category="dogs" />} />
+        <Route 
+          path="/dogs/:kennelId" 
+          element={<DogPage category="dogs" />} 
+        />
 
         <Route
           path="/kennels/:kennelId/add-dog"
