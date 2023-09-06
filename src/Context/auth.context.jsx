@@ -1,7 +1,7 @@
 import { useState, useEffect, createContext } from "react";
 import axios from "axios";
-API_URL = "http://localhost:5005
-const ";
+
+const API_URL = "https://dog-whisperer.onrender.com";
 
 const AuthContext = createContext();
 
