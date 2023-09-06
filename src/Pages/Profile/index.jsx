@@ -94,7 +94,7 @@ function ProfilePage() {
       </div>
 
       {/* Conditionally render the adoption requests */}
-      {user && user.userType === "user" && (
+      {user && user.userType === "user" && adoptionRequests && adoptionRequests.length > 0 && (
         <div>
           <h2>Your Adoption Requests</h2>
           <ul>
@@ -111,7 +111,13 @@ function ProfilePage() {
       {manager && (
         <div>
           <h2>Manager Approval Section</h2>
-          {/* Include the manager approval UI or functionality here */}
+          <ul>
+            {adoptionRequests && adoptionRequests.length > 0 && adoptionRequests.map((request) => (
+              <li key={request._id}>
+                Dog: {request.dog.name}, Status: {request.status}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>

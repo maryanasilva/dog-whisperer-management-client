@@ -79,6 +79,7 @@ function SignUpPage(props) {
         <div>
           <label htmlFor="userType">User Type</label>
         </div>
+
         <div>
           <input
             type="radio"
@@ -86,7 +87,9 @@ function SignUpPage(props) {
             value="User"
             name="userType"
             onClick={handleUserType}
+            defaultChecked // Default to User role
           />
+          
           <label htmlFor="user">User</label>
 
           <input

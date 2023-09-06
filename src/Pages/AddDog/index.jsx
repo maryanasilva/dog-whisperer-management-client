@@ -53,7 +53,7 @@ function AddDog() {
     <div>
       <h2> Add New Dog</h2>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label style={{color: '#000'}}>
           Name:
           <input
             type="text"
@@ -63,7 +63,7 @@ function AddDog() {
           />
         </label>
 
-        <label>
+        <label style={{color: '#000'}}>
           Description:
           <input
             type="text"
@@ -73,7 +73,7 @@ function AddDog() {
           />
         </label>
 
-        <label>
+        <label style={{color: '#000'}}>
           Age:
           <input
             type="text"
@@ -83,7 +83,7 @@ function AddDog() {
           />
         </label>
 
-        <label>
+        <label style={{color: '#000'}}>
           Genre:
           <input
             type="text"
@@ -93,7 +93,7 @@ function AddDog() {
           />
         </label>
 
-        <label>
+        <label style={{color: '#000'}}>
           Size:
           <input
             type="text"
@@ -103,7 +103,7 @@ function AddDog() {
           />
         </label>
 
-        <label>
+        <label style={{color: '#000'}}>
           Image:
           <input
             type="text"
