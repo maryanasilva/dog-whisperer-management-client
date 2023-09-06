@@ -37,29 +37,32 @@ const KennelPage = ({ category }) => {
         loop
         muted
         style={{
-          position: 'fixed',
+          position: "fixed",
           right: 0,
           bottom: 0,
-          minWidth: '100%',
-          minHeight: '100%',
+          minWidth: "100%",
+          minHeight: "100%",
           zIndex: -1,
         }}
-        src= "https://player.vimeo.com/external/403883843.sd.mp4?s=fd15faff528e81dbb134e5ae16098c6d767ebd60&profile_id=164&oauth2_token_id=57447761"
-        >
-      </video>
+        src="https://player.vimeo.com/external/403883843.sd.mp4?s=fd15faff528e81dbb134e5ae16098c6d767ebd60&profile_id=164&oauth2_token_id=57447761"
+      ></video>
 
       <h2>Kennels</h2>
 
-      <button onClick={() => setShowAddKennelForm(!showAddKennelForm)}>
-        {showAddKennelForm ? 'Hide Add Kennel Form' : 'Add Kennel'}
+      {/* <button onClick={() => setShowAddKennelForm(!showAddKennelForm)}>
+        {showAddKennelForm ? "Hide Add Kennel Form" : "Add Kennel"}
       </button>
 
-      {showAddKennelForm && <AddKennel onKennelAdded={handleKennelAdded} />}
+      {showAddKennelForm && <AddKennel onKennelAdded={handleKennelAdded} />} */}
 
       <ul className="kennel-list">
         {kennels.map((kennel) => (
           <li key={kennel._id} className="kennel-item">
-            <img src={kennel.image} alt={kennel.name} className="kennel-image" />
+            <img
+              src={kennel.image}
+              alt={kennel.name}
+              className="kennel-image"
+            />
             <div className="kennel-details">
               <h3 className="kennel-name">{kennel.name}</h3>
               <p className="kennel-description">{kennel.description}</p>
