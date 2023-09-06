@@ -2,7 +2,7 @@
 
 .kennel-page {
   padding: 20px;
-  padding-top: 70px;
+  padding-top: 100px;
 }
 
 .kennel-header {
@@ -349,55 +349,6 @@ button:hover {
 
 .btn-danger:hover {
   background-color: #c82333;
-}
-
-/* AddDog */
-.add-dog-container {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f7f7f7;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.add-dog-title {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.add-dog-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.add-dog-label {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-.add-dog-input {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.add-dog-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-.add-dog-button:hover {
-  background-color: #0056b3;
 }
 
 /* ProfilePage */
