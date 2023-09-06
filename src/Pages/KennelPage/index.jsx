@@ -2,12 +2,36 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AddKennel from "../AddKennel";
+import { Button } from "@mui/material";
 
 const API_URL = "http://localhost:5005";
 
 const KennelPage = ({ category }) => {
   const [kennels, setKennels] = useState([]);
   const [showAddKennelForm, setShowAddKennelForm] = useState(false);
+
+  const checkUser = async (e) => {
+    try {
+      const storedToken = localStorage.getItem("authToken");
+
+      let response = await axios.get(`${API_URL}/api/profile`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      });
+
+      if (response.data.userType === "Manager") {
+        console.log("user type",response.data.userType);
+        setShowAddKennelForm(true);
+      } else {
+        console.log("else:",response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    checkUser();
+  }, []);
 
   useEffect(() => {
     console.log(`Fetching kennels for category: ${category}`);
@@ -23,12 +47,12 @@ const KennelPage = ({ category }) => {
       });
   }, [category]);
 
-  const handleKennelAdded = (newKennel) => {
+  /*  const handleKennelAdded = (newKennel) => {
     // Add the newly created kennel to the kennels list
     setKennels([...kennels, newKennel]);
     // Hide the Add Kennel form
     setShowAddKennelForm(false);
-  };
+  }; */
 
   return (
     <div className="kennel-page">
@@ -54,6 +78,11 @@ const KennelPage = ({ category }) => {
       </button>
 
       {showAddKennelForm && <AddKennel onKennelAdded={handleKennelAdded} />} */}
+      {showAddKennelForm && (
+        <div>
+          <Button href={"/kennels/add-kennel"}>Add Kennel</Button>
+        </div>
+      )}
 
       <ul className="kennel-list">
         {kennels.map((kennel) => (
