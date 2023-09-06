@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/auth.context";
 
-const API_URL = "http://localhost:5005"
+const API_URL = "https://dog-whisperer.onrender.com";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
