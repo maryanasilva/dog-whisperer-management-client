@@ -94,29 +94,34 @@ function ProfilePage() {
       </div>
 
       {/* Conditionally render the adoption requests */}
-      {user && user.userType === "user" && adoptionRequests && adoptionRequests.length > 0 && (
-        <div>
-          <h2>Your Adoption Requests</h2>
-          <ul>
-            {adoptionRequests.map((request) => (
-              <li key={request._id}>
-                Dog: {request.dog.name}, Status: {request.status}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {user &&
+        user.userType === "user" &&
+        adoptionRequests &&
+        adoptionRequests.length > 0 && (
+          <div>
+            <h2>Your Adoption Requests</h2>
+            <ul>
+              {adoptionRequests.map((request) => (
+                <li key={request._id}>
+                  Dog: {request.dog.name}, Status: {request.status}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
       {/* Conditionally render the manager approval section */}
       {manager && (
         <div>
           <h2>Manager Approval Section</h2>
           <ul>
-            {adoptionRequests && adoptionRequests.length > 0 && adoptionRequests.map((request) => (
-              <li key={request._id}>
-                Dog: {request.dog.name}, Status: {request.status}
-              </li>
-            ))}
+            {adoptionRequests &&
+              adoptionRequests.length > 0 &&
+              adoptionRequests.map((request) => (
+                <li key={request._id}>
+                  Dog: {request.dog.name}, Status: {request.status}
+                </li>
+              ))}
           </ul>
         </div>
       )}
