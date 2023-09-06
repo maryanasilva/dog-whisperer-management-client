@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AddKennel from "../AddKennel";
 import { Button } from "@mui/material";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://dog-whisperer.onrender.com";
 
 const KennelPage = ({ category }) => {
   const [kennels, setKennels] = useState([]);
@@ -19,10 +19,10 @@ const KennelPage = ({ category }) => {
       });
 
       if (response.data.userType === "Manager") {
-        console.log("user type",response.data.userType);
+        console.log("user type", response.data.userType);
         setShowAddKennelForm(true);
       } else {
-        console.log("else:",response.data);
+        console.log("else:", response.data);
       }
     } catch (error) {
       console.log(error);

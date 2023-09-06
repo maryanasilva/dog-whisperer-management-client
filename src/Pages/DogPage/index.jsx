@@ -11,7 +11,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import TextField from "@mui/material/TextField";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://dog-whisperer.onrender.com";
 
 const DogPage = () => {
   const { kennelId } = useParams();
