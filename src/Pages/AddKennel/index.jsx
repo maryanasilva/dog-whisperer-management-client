@@ -14,9 +14,6 @@ function AddKennel() {
   const [location, setLocation] = useState("");
   const [image, setImage] = useState("");
 
-  // Get the user's manager status from the context
-  const { autenticateUser } = useContext(AuthContext);
-
   // Handle submit form
   const handleSubmit = async (e) => {
     e.preventDefault();

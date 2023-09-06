@@ -80,7 +80,9 @@ const KennelPage = ({ category }) => {
       {showAddKennelForm && <AddKennel onKennelAdded={handleKennelAdded} />} */}
       {showAddKennelForm && (
         <div>
-          <Button href={"/kennels/add-kennel"}>Add Kennel</Button>
+          <Link to="/kennels/add-kennel">
+            <Button>Add Kennel</Button>
+          </Link>
         </div>
       )}
 
