@@ -5,31 +5,57 @@
   padding-top: 100px;
 }
 
-.kennel-header {
+/* .kennel-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-}
+} */
 
-.kennel-header h2 {
+/* .kennel-header h2 {
   font-size: 24px;
   color: #fff;
+} */
+
+.kennels-image {
+  margin-bottom: 50px;
+  margin-top: -25px;
 }
+
+.dog-image {
+  position: relative;
+  width: 100vw;
+  opacity: 90%;
+}
+
+.button-add-kennel {
+  margin-bottom: 50px;
+}
+
+/* .kennel-title {
+  font-size: 50px;
+  text-align: start;
+  color: black;
+} */
 
 .kennel-list {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .kennel-item {
+  background-color: rgb(208, 169, 116);
+  width: 500px;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  border: 1px solid #ddd;
+  border: 2px solid #000000;
+  box-shadow: #333;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
 }
 
@@ -49,18 +75,24 @@
 }
 
 .kennel-name {
-  font-size: 20px;
-  color: #fff;
+  font-size: 25px;
+  color: black;
   margin-bottom: 10px;
 }
 
 .kennel-description {
-  font-size: 16px;
-  color: #fff;
+  font-size: 15px;
+  color: black;
   margin-bottom: 10px;
 }
 
-.explore-link {
+.kennel-location {
+  font-size: 18px;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.find-dog {
   background-color: #007bff;
   color: #fff;
   padding: 10px 20px;
@@ -69,6 +101,7 @@
   text-decoration: none;
   font-size: 16px;
   transition: background-color 0.2s ease-in-out;
+  justify-content: end;
 }
 
 .explore-link:hover {
@@ -81,7 +114,12 @@
 }
 
 .login-box {
-  background-color: rgba(245, 245, 245, 0.8); /* Semi-transparent light gray background */
+  background-color: rgba(
+    245,
+    245,
+    245,
+    0.8
+  ); /* Semi-transparent light gray background */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -136,7 +174,12 @@
 }
 
 .signUp-box {
-  background-color: rgba(245, 245, 245, 0.8); /* Semi-transparent light gray background */
+  background-color: rgba(
+    245,
+    245,
+    245,
+    0.8
+  ); /* Semi-transparent light gray background */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -219,7 +262,8 @@
 .dog-cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
+  border: 2px white;
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
@@ -270,7 +314,6 @@ button {
 button:hover {
   background-color: #2969b0;
 }
-
 
 /* EditDogPage */
 .edit-dog-container {

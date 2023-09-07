@@ -214,7 +214,7 @@ function HomePage() {
               src='https://winsfolio.net/html/patte/assets/img/dog-walker-1.png'
               alt='Volunteer'
             />
-            <p>You want to be a volunteer? </p>
+            <p>Do you want to volunteer? </p>
             <button onClick={openVolunteerForm}>Volunteer Now</button>
           </div>
         )}

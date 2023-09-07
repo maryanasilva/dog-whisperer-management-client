@@ -3,7 +3,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #474747;
+  /* background-color: #474747; */
+  background-color: #f5f3e5;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -241,16 +242,17 @@ body {
 }
 
 .Volunteer button:hover {
-  background-color: #2969b0;
+  background-color: #ceba4b;
   color: #fff;
 }
 /* Apply a basic style to the form container */
 form {
-  max-width: 400px;
+  /*   max-width: 400px; */
+  width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f7f7f7;
-  border: 1px solid #ccc;
+  /*   background-color: #f7f7f7; */
+  border: 2px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -285,8 +287,8 @@ select:focus {
 
 /* Style for the submit button */
 button[type="submit"] {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #ccc;
+  color: #333;
   border: none;
   border-radius: 4px;
   padding: 10px 20px;

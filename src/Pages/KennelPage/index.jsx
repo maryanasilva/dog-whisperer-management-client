@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import AddKennel from "../AddKennel";
-import { Button } from "@mui/material";
+import { Button, CardActionArea, CardActions } from "@mui/material";
 
 const API_URL = "https://dog-whisperer.onrender.com";
 
@@ -47,48 +46,44 @@ const KennelPage = ({ category }) => {
       });
   }, [category]);
 
-  /*  const handleKennelAdded = (newKennel) => {
-    // Add the newly created kennel to the kennels list
-    setKennels([...kennels, newKennel]);
-    // Hide the Add Kennel form
-    setShowAddKennelForm(false);
-  }; */
-
   return (
     <div className="kennel-page">
-      <h2>Kennels</h2>
+      <div className="kennels-image">
+        {/* <h2 className="kennel-title">Kennels</h2> */}
+        <img src="../src/assets/kennels.png" alt="" className="dog-image" />
+      </div>
 
-      {/* <button onClick={() => setShowAddKennelForm(!showAddKennelForm)}>
-        {showAddKennelForm ? "Hide Add Kennel Form" : "Add Kennel"}
-      </button>
-
-      {showAddKennelForm && <AddKennel onKennelAdded={handleKennelAdded} />} */}
       {showAddKennelForm && (
-        <div>
+        <div className="button-add-kennel">
           <Link to="/kennels/add-kennel">
             <Button>Add Kennel</Button>
           </Link>
         </div>
       )}
 
-      <ul className="kennel-list">
-        {kennels.map((kennel) => (
-          <li key={kennel._id} className="kennel-item">
-            <img
-              src={kennel.image}
-              alt={kennel.name}
-              className="kennel-image"
-            />
-            <div className="kennel-details">
-              <h3 className="kennel-name">{kennel.name}</h3>
-              <p className="kennel-description">{kennel.description}</p>
-              <Link to={`/dogs/${kennel._id}`} className="explore-link">
-                Explore Dogs
-              </Link>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <div>
+        <ul className="kennel-list">
+          {kennels.map((kennel) => (
+            <li key={kennel._id} className="kennel-item">
+              <img
+                src={kennel.image}
+                alt={kennel.name}
+                className="kennel-image"
+              />
+              <div className="kennel-details">
+                <h3 className="kennel-name">{kennel.name}</h3>
+                <p className="kennel-description">{kennel.description}</p>
+                <p className="kennel-location">{kennel.location}</p>
+                <div>
+                  <Link to={`/dogs/${kennel._id}`} className="find-dog">
+                    Find Your Dog
+                  </Link>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
