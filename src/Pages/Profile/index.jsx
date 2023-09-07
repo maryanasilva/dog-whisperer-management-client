@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 
-const API_URL = "http://localhost:5005"
+const API_URL = "http://localhost:5005";
 
 function ProfilePage() {
   const [user, setUser] = useState(null);
@@ -21,9 +21,8 @@ function ProfilePage() {
 
       setUser(response.data);
       setDogs(response.data.ownedDogs);
-      setAdoptionRequests(response.data.adoptionRequests);
 
-      if (response.data.userType === "user") {
+      if (response.data.userType === "User") {
         setManager(false);
       } else {
         setManager(true);
@@ -45,8 +44,19 @@ function ProfilePage() {
     }
   };
 
+  const getAdoptions = async () => {
+    try {
+      let pending = await axios.get(`${API_URL}/api/adoptions`);
+      console.log(pending.data)
+      setAdoptionRequests(pending.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getUser();
+    getAdoptions();
   }, []);
 
   const deleteDog = (dogId) => {
@@ -119,7 +129,7 @@ function ProfilePage() {
               adoptionRequests.length > 0 &&
               adoptionRequests.map((request) => (
                 <li key={request._id}>
-                  Dog: {request.dog.name}, Status: {request.status}
+                  Dog: {request.name}, {request.image}, Status: {request.status}
                 </li>
               ))}
           </ul>
