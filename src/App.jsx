@@ -66,10 +66,7 @@ function App() {
           element={<EditDogPage />}
         />
 
-        <Route
-          path="/adoptions"
-          element={<AdoptionPage />}
-        />
+       
       </Routes>
     </div>
   );
