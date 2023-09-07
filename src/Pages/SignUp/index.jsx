@@ -81,27 +81,30 @@ function SignUpPage(props) {
               onChange={(e) => setPassword(e.target.value)}
             ></input>
           </label>
-          <div>
-            <label htmlFor="userType">User Type:</label>
-          </div>
+
           <div className="user-type">
+            <label htmlFor="userType" style={{ marginTop: 14 }}>
+              User Type:
+            </label>
             <input
               type="radio"
               label="User"
               value="User"
               name="userType"
               onClick={handleUserType}
+              style={{ marginLeft: 15 }}
             />
             <label htmlFor="user" style={{ marginTop: 14 }}>
               User
             </label>
-            <div style={{ width: 20 }}></div>
+
             <input
               type="radio"
               label="Manager"
               value="Manager"
               name="userType"
               onClick={handleUserType}
+              style={{ marginLeft: 20 }}
             />
             <label htmlFor="manager" style={{ marginTop: 14 }}>
               Manager
