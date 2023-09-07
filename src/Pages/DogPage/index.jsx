@@ -1,28 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
-import TextField from "@mui/material/TextField";
 
-const API_URL = "http://localhost:5005"
+const API_URL = "http://localhost:5005";
 
 const DogPage = () => {
   const { kennelId } = useParams();
   const [dogs, setDogs] = useState([]);
-  const [openForm, setOpenForm] = useState(false);
-  const [selectedDog, setSelectedDog] = useState(null);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-  });
 
   useEffect(() => {
     console.log(`Fetching dogs for kennel with ID: ${kennelId}`);
@@ -40,39 +27,6 @@ const DogPage = () => {
         );
       });
   }, [kennelId]);
-
-  const handleAdoptClick = (dog) => {
-    setSelectedDog(dog);
-    setOpenForm(true);
-  };
-
-  const handleFormClose = () => {
-    setOpenForm(false);
-  };
-
-  const handleFormSubmit = () => {
-    // Handle the form submission here, e.g., send a notification to the manager or store the request.
-    // You can use the formData state to access the user's input.
-    console.log("Adoption request submitted:", formData);
-
-    // Close the form dialog
-    setOpenForm(false);
-
-    // Optionally, reset the form fields
-    setFormData({
-      name: "",
-      email: "",
-      phoneNumber: "",
-    });
-  };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
 
   return (
     <div style={{ marginTop: "100px" }}>
@@ -108,13 +62,12 @@ const DogPage = () => {
                 <Typography variant="subtitle1">
                   Description: {dog.description}
                 </Typography>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => handleAdoptClick(dog)}
-                >
-                  Adopt
-                </Button>
+                {/* Redirect to the Adoption Page when clicking "Adopt" */}
+                <Link to="/adoptions">
+                  <Button variant="contained" color="primary">
+                    Adopt
+                  </Button>
+                </Link>
               </div>
             </div>
           ))}
@@ -128,47 +81,6 @@ const DogPage = () => {
           </Button>
         </Link>
       </Container>
-
-      {/* Adoption Form Dialog */}
-      <Dialog open={openForm} onClose={handleFormClose}>
-        <DialogTitle>Adoption Request</DialogTitle>
-        <DialogContent>
-          <form>
-            <TextField
-              fullWidth
-              label="Your Name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              margin="normal"
-            />
-            <TextField
-              fullWidth
-              label="Email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              margin="normal"
-            />
-            <TextField
-              fullWidth
-              label="Phone Number"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              margin="normal"
-            />
-          </form>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleFormClose} color="secondary">
-            Cancel
-          </Button>
-          <Button onClick={handleFormSubmit} color="primary">
-            Submit Request
-          </Button>
-        </DialogActions>
-      </Dialog>
     </div>
   );
 };

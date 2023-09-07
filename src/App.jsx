@@ -13,40 +13,36 @@ import AddKennel from "./Pages/AddKennel";
 import DogPage from "./Pages/DogPage";
 import AddDog from "./Pages/AddDog";
 import EditDogPage from "./Pages/EditDog";
+import AdoptionPage from "./Pages/AdoptionPage";
 
 function App() {
   return (
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" 
+          element={<HomePage />} 
+        />
+
         <Route
           path="/profile"
-          element={
-            <IsPrivate>
-              <ProfilePage />
-            </IsPrivate>
-          }
+          element={<IsPrivate><ProfilePage/></IsPrivate>}
         />
+
         <Route
           path="/signup"
-          element={
-            <IsAnon>
-              <SignUpPage />
-            </IsAnon>
-          }
+          element={<IsAnon><SignUpPage /></IsAnon>}
         />
+
         <Route
           path="/login"
-          element={
-            <IsAnon>
-              <LoginPage />
-            </IsAnon>
-          }
+          element={<IsAnon><LoginPage /></IsAnon>}
         />
+
         <Route 
           path="/kennels" 
-          element={<KennelPage category="kennels" />} 
+          element={<KennelPage 
+          category="kennels" />} 
         />
 
         <Route 
@@ -58,19 +54,21 @@ function App() {
           path="/dogs/:kennelId" 
           element={<DogPage category="dogs" />} 
         />
+        
 
         <Route
           path="/kennels/:kennelId/add-dog"
-          element={
-            <IsPrivate>
-              <AddDog />
-            </IsPrivate>
-          }
+          element={<IsPrivate><AddDog /></IsPrivate>}
         />
 
         <Route
           path="/kennels/:kennelId/edit-dog/:dogId"
           element={<EditDogPage />}
+        />
+
+        <Route
+          path="/adoptions"
+          element={<AdoptionPage />}
         />
       </Routes>
     </div>
