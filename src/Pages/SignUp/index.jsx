@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005"
+const API_URL = "https://dog-whisperer.onrender.com";
 
 function SignUpPage(props) {
   const [email, setEmail] = useState("");
@@ -76,18 +76,18 @@ function SignUpPage(props) {
             ></input>
           </label>
 
-        <div>
-          <label htmlFor="userType">User Type</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            label="User"
-            value="User"
-            name="userType"
-            onClick={handleUserType}
-          />
-          <label htmlFor="user">User</label>
+          <div>
+            <label htmlFor="userType">User Type</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              label="User"
+              value="User"
+              name="userType"
+              onClick={handleUserType}
+            />
+            <label htmlFor="user">User</label>
 
             <input
               type="radio"

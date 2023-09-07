@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AddKennel from "../AddKennel";
 import { Button } from "@mui/material";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://dog-whisperer.onrender.com";
 
 const KennelPage = ({ category }) => {
   const [kennels, setKennels] = useState([]);
