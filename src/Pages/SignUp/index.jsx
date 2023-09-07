@@ -35,7 +35,13 @@ function SignUpPage(props) {
 
   return (
     <div className="signUp-page">
-      <video autoPlay muted loop className="background-video" preload="auto">
+      <video
+        autoPlay
+        muted
+        loop
+        className="background-video-signup"
+        preload="auto"
+      >
         <source
           src="https://player.vimeo.com/external/325793715.sd.mp4?s=30a8fc34cd7dfc09a3c06651d9325c015cbfd3d8&profile_id=164&oauth2_token_id=57447761"
           type="video/mp4"
@@ -75,11 +81,10 @@ function SignUpPage(props) {
               onChange={(e) => setPassword(e.target.value)}
             ></input>
           </label>
-
           <div>
-            <label htmlFor="userType">User Type</label>
+            <label htmlFor="userType">User Type:</label>
           </div>
-          <div>
+          <div className="user-type">
             <input
               type="radio"
               label="User"
@@ -87,8 +92,10 @@ function SignUpPage(props) {
               name="userType"
               onClick={handleUserType}
             />
-            <label htmlFor="user">User</label>
-
+            <label htmlFor="user" style={{ marginTop: 14 }}>
+              User
+            </label>
+            <div style={{ width: 20 }}></div>
             <input
               type="radio"
               label="Manager"
@@ -96,7 +103,9 @@ function SignUpPage(props) {
               name="userType"
               onClick={handleUserType}
             />
-            <label htmlFor="manager">Manager</label>
+            <label htmlFor="manager" style={{ marginTop: 14 }}>
+              Manager
+            </label>
           </div>
 
           <button type="submit">Sign Up</button>

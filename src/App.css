@@ -19,13 +19,13 @@
 
 .kennels-image {
   margin-bottom: 50px;
-  margin-top: -25px;
+  margin-top: -20px;
 }
 
 .dog-image {
-  position: relative;
   width: 100vw;
   opacity: 90%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 2);
 }
 
 .button-add-kennel {
@@ -53,7 +53,7 @@
   align-items: center;
   margin-bottom: 20px;
   border: 2px solid #000000;
-  box-shadow: #333;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 5px;
   transition: transform 0.2s ease-in-out;
@@ -93,28 +93,35 @@
 }
 
 .find-dog {
-  background-color: #007bff;
+  background-color: #5c3b1a;
   color: #fff;
+  margin-left: 130px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   transition: background-color 0.2s ease-in-out;
   justify-content: end;
 }
 
-.explore-link:hover {
-  background-color: #0056b3;
+.find-dog:hover {
+  background-color: #7a5634;
 }
 
 /* LoginPage */
+
+.background-video-login {
+  margin-top: 60px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
 .login-page {
   margin-top: 10px;
 }
 
 .login-box {
-  background-color: rgba(
+  /*   background-color: rgba(
     245,
     245,
     245,
@@ -122,24 +129,30 @@
   ); /* Semi-transparent light gray background */
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); */
   text-align: center;
+}
+
+.login-form {
+  margin-left: -20px;
 }
 
 .login-box h1 {
   color: #333; /* Dark text color */
+  margin-left: -20px;
 }
 
 .login-box form {
   margin-top: 20px;
   color: #333;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
-.login-box label {
+/* .login-box label {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
-}
+} */
 
 .login-box input[type="email"],
 .login-box input[type="password"] {
@@ -150,49 +163,63 @@
   border-radius: 5px;
 }
 
-.login-box button {
-  background-color: #007bff; /* Blue button background color */
-  color: #fff; /* White button text color */
+/* .login-box button {
+  background-color: #007bff;
+  color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 
 .login-box button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #7a5634;
+  color: white;
 }
 
-.login-box p {
+/* .login-box p {
   margin-top: 10px;
-  color: #333; /* Dark text color */
+  color: #333;
+} */
+
+.dont-account {
+  margin-left: -20px;
 }
 
 /* SignUpPage */
+
+.background-video-signup {
+  margin-top: -20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
 .signUp-page {
   margin-top: 100px;
 }
 
 .signUp-box {
-  background-color: rgba(
+  /*   background-color: rgba(
     245,
     245,
     245,
     0.8
-  ); /* Semi-transparent light gray background */
+  ); */ /* Semi-transparent light gray background */
+  margin-left: -22px;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
   text-align: center;
 }
 
 .signUp-box h1 {
   color: #333; /* Dark text color */
+  margin-left: -22px;
 }
 
 .signUp-box form {
   margin-top: 20px;
   color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .signUp-box label {
@@ -211,22 +238,30 @@
   border-radius: 5px;
 }
 
-.signUp-box button {
-  background-color: #007bff; /* Blue button background color */
-  color: #fff; /* White button text color */
+/* .signUp-box button {
+  background-color: #007bff;
+  color: #fff; 
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 
 .signUp-box button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #7a5634;
+  color: white;
 }
 
 .signUp-box p {
   margin-top: 10px;
   color: #333; /* Dark text color */
+}
+
+.user-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 /* DogPage */
