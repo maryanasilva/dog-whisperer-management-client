@@ -47,6 +47,9 @@ function AddKennel() {
 
       {showAddKennelForm && <AddKennel onKennelAdded={handleKennelAdded} />} */}
 
+      <div className="add-kennel">
+        <h1>Add Kennel</h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <label>
           Name:
@@ -88,7 +91,9 @@ function AddKennel() {
           />
         </label>
 
-        <button type="submit">Create a Kennel</button>
+        <button type="submit" className="create-kennel-button">
+          Create a Kennel
+        </button>
       </form>
     </div>
   );

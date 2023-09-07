@@ -51,7 +51,7 @@ function AddDog() {
 
   return (
     <div>
-      <h2> Add New Dog</h2>
+      <h2 className="create-new-dog"> New Dog</h2>
       <form onSubmit={handleSubmit}>
         <label style={{ color: "#000" }}>
           Name:
@@ -113,7 +113,9 @@ function AddDog() {
           />
         </label>
 
-        <button type="submit">Create a Dog</button>
+        <button type="submit" className="create-dog-button">
+          Create a Dog
+        </button>
       </form>
     </div>
   );

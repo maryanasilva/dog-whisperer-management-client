@@ -1,5 +1,4 @@
 /* KennelPage */
-
 .kennel-page {
   padding: 20px;
   padding-top: 100px;
@@ -109,8 +108,47 @@
   background-color: #7a5634;
 }
 
-/* LoginPage */
+/* Add Kennel Form */
+form {
+  color: black;
+  text-align: center;
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid #5c3b1a;
+  border-radius: 5px;
+  margin-top: 20px;
+  color: #333;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
 
+.add-kennel {
+  color: #000;
+  text-align: center;
+}
+
+.create-kennel-button {
+  margin-left: 10px;
+}
+
+.create-kennel-button:hover {
+  background-color: #7a5634;
+  color: white;
+}
+
+/* Add a Dog*/
+.create-new-dog {
+  color: black;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.create-dog-button:hover {
+  background-color: #7a5634;
+  color: white;
+}
+
+/* LoginPage */
 .background-video-login {
   margin-top: 60px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -187,7 +225,6 @@
 }
 
 /* SignUpPage */
-
 .background-video-signup {
   margin-top: -20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -254,7 +291,7 @@
 
 .signUp-box p {
   margin-top: 10px;
-  color: #333; /* Dark text color */
+  color: #333;
 }
 
 .user-type {
@@ -262,206 +299,4 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-
-/* DogPage */
-.profile-container {
-  text-align: center;
-  padding: 20px;
-  background-color: #f8f8f8;
-}
-
-.profile-header {
-  margin-top: 100px;
-}
-
-.profile-photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #3498db;
-}
-
-.profile-header h1 {
-  font-size: 28px;
-  color: #333;
-  margin-top: 10px;
-}
-
-.profile-header p {
-  font-size: 18px;
-  color: #666;
-}
-
-.dog-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  border: 2px white;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.dog-card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: left;
-  width: 300px;
-}
-
-.dog-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-.dog-card h3 {
-  font-size: 20px;
-  margin: 0;
-  color: #3498db;
-  margin-top: 10px;
-}
-
-.dog-card p {
-  font-size: 16px;
-  color: #666;
-  margin-top: 5px;
-}
-
-.edit-button,
-button {
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.edit-button:hover,
-button:hover {
-  background-color: #2969b0;
-}
-
-/* EditDogPage */
-.edit-dog-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px;
-}
-
-.edit-dog-heading {
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: #333;
-  text-transform: uppercase;
-}
-
-.edit-dog-form-container {
-  width: 1090%;
-  max-width: 400px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-label {
-  font-size: 18px;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #333;
-}
-
-.form-control {
-  width: 95%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-.btn-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.btn-primary,
-.btn-danger {
-  padding: 12px 24px;
-  border-radius: 5px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-}
-
-.btn-danger:hover {
-  background-color: #c82333;
-}
-
-/* ProfilePage */
-.profile-container {
-  padding: 20px;
-  background-color: #ffdb58;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin: 20px auto;
-  max-width: 400px;
-}
-
-.profile-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.profile-title {
-  font-size: 36px;
-  margin: 0;
-  color: #333;
-}
-
-.profile-subtitle {
-  font-size: 18px;
-  margin: 0;
-  color: #555;
-}
-
-.profile-info {
-  text-align: left;
-}
-
-.profile-item {
-  font-size: 20px;
-  margin: 10px 0;
-  color: #333;
 }
