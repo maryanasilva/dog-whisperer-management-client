@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Button } from "@mui/material";
 
 const API_URL = "https://dog-whisperer.onrender.com";
 
@@ -49,14 +49,13 @@ const KennelPage = ({ category }) => {
   return (
     <div className="kennel-page">
       <div className="kennels-image">
-        {/* <h2 className="kennel-title">Kennels</h2> */}
         <img src="../src/assets/kennels.png" alt="" className="dog-image" />
       </div>
 
       {showAddKennelForm && (
-        <div className="button-add-kennel">
+        <div>
           <Link to="/kennels/add-kennel">
-            <Button>Add Kennel</Button>
+            <Button className="button-add-kennel">Add Kennel</Button>
           </Link>
         </div>
       )}

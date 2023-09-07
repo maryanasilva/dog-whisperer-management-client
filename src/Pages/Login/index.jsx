@@ -34,7 +34,13 @@ const LoginPage = () => {
 
   return (
     <div className="login-page">
-      <video autoPlay muted loop className="background-video" preload="auto">
+      <video
+        autoPlay
+        muted
+        loop
+        className="background-video-login"
+        preload="auto"
+      >
         <source
           src="https://player.vimeo.com/external/582002197.sd.mp4?s=657dfdc80229ef2cfe46fff32c0ab1b9aa8894fa&profile_id=164&oauth2_token_id=57447761"
           type="video/mp4"
@@ -44,29 +50,33 @@ const LoginPage = () => {
 
       <div className="login-box">
         <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <div className="login-form">
+          <form onSubmit={handleSubmit}>
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-          <button type="submit">Login</button>
-        </form>
-        {errorMessage && <p>{errorMessage}</p>}
-        <Link to="/signup">
-          <p>Don't have an account yet?</p>
-        </Link>
+            <button type="submit">Login</button>
+          </form>
+        </div>
+        <div className="dont-account">
+          {errorMessage && <p>{errorMessage}</p>}
+          <Link to="/signup">
+            <p>Don't have an account yet?</p>
+          </Link>
+        </div>
       </div>
     </div>
   );
