@@ -19,10 +19,11 @@ function ProfilePage() {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
 
+      console.log("User Data:", response.data); // Log user data
       setUser(response.data);
       setDogs(response.data.ownedDogs);
 
-      if (response.data.userType === "User") {
+      if (response.data.userType === "user") { // Check for "user" role (lowercase)
         setManager(false);
       } else {
         setManager(true);
@@ -47,7 +48,7 @@ function ProfilePage() {
   const getAdoptions = async () => {
     try {
       let pending = await axios.get(`${API_URL}/api/adoptions`);
-      console.log(pending.data)
+      console.log("Adoption Requests:", pending.data); // Log adoption requests data
       setAdoptionRequests(pending.data);
     } catch (error) {
       console.log(error);
@@ -73,21 +74,18 @@ function ProfilePage() {
   };
 
   return (
-    <div>
+    <div style={{ marginTop: "100px", color: "black", paddingLeft: 20}}>
       <h1>Hello {user ? user.name : "User"}, this is your profile page</h1>
       <div>
         <p>{user && user.userType}</p>
         <p>Name: {user && user.name}</p>
         <p>Email: {user && user.email}</p>
       </div>
-      <div
-        className="dog-cards"
-        style={{ overflowY: "scroll", maxHeight: "400px" }}
-      >
+      <div className="dog-cards" style={{ overflowY: "scroll", maxHeight: "500px" }}>
         <h2>Your Dogs</h2>
         {dogs &&
           dogs.map((dog) => (
-            <div key={dog._id} className="dog-card">
+            <div  key={dog._id} className="dog-card">
               <img src={dog.image} alt={dog.name} />
               <h3>Name: {dog.name}</h3>
               <h3>Age: {dog.age}</h3>
@@ -102,18 +100,16 @@ function ProfilePage() {
             </div>
           ))}
       </div>
-
+  
       {/* Conditionally render the adoption requests */}
       {user &&
-        user.userType === "user" &&
-        adoptionRequests &&
-        adoptionRequests.length > 0 && (
+        user.userType === "User" && (
           <div>
             <h2>Your Adoption Requests</h2>
             <ul>
               {adoptionRequests.map((request) => (
                 <li key={request._id}>
-                  Dog: {request.dog.name}, Status: {request.status}
+                  Dog: {request.name}, Status: {request.status}
                 </li>
               ))}
             </ul>
@@ -121,18 +117,34 @@ function ProfilePage() {
         )}
 
       {/* Conditionally render the manager approval section */}
-      {manager && (
+      {manager && user.userType === "Manager" && (
         <div>
           <h2>Manager Approval Section</h2>
-          <ul>
-            {adoptionRequests &&
-              adoptionRequests.length > 0 &&
-              adoptionRequests.map((request) => (
-                <li key={request._id}>
-                  Dog: {request.name}, {request.image}, Status: {request.status}
-                </li>
+          {adoptionRequests && adoptionRequests.length > 0 ? (
+            <div className="dog-cards" style={{ overflowY: "scroll", maxHeight: "400px" }}>
+              {adoptionRequests.map((request) => (
+                <div key={request._id} className="dog-card">
+                  <img src={request.image} alt={request.name} />
+                  <h3>Name: {request.name}</h3>
+                  <h3>Status: {request.status}</h3>
+                  <button
+                    style={{
+                      backgroundColor: "blue",
+                      color: "white",
+                      padding: "5px 10px",
+                      border: "none",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => approveAdoption(request._id)}
+                  >
+                    Approve
+                  </button>
+                </div>
               ))}
-          </ul>
+            </div>
+          ) : (
+            <p>No pending approvals.</p>
+          )}
         </div>
       )}
     </div>
