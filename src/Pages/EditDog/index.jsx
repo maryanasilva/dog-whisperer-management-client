@@ -70,7 +70,7 @@ function EditDogPage() {
 
   return (
     <div>
-      <h2>Edit Dog</h2>
+      <h2 style={{color:"black"}}>Edit Dog</h2>
       <form onSubmit={handleSubmit}>
       <label style={{color: '#000'}}>
           Name:

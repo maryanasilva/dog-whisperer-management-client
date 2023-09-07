@@ -1,6 +1,45 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
+import styled from "styled-components";
+
+// Define a styled component for the approval section container
+const ApprovalSectionContainer = styled.div`
+  text-align: center;
+  padding-top: 20px;
+`;
+
+// Define a styled component for the approval cards container
+const ApprovalCardsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
+// Define a styled component for the approval card
+const ApprovalCard = styled.div`
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  max-width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+// Define a styled component for buttons
+const Button = styled.button`
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
 
 const API_URL = "http://localhost:5005";
 
@@ -55,11 +94,6 @@ function ProfilePage() {
     }
   };
 
-  useEffect(() => {
-    getUser();
-    getAdoptions();
-  }, []);
-
   const deleteDog = (dogId) => {
     // Send an API request to delete the dog by ID
     axios
@@ -73,19 +107,43 @@ function ProfilePage() {
       });
   };
 
+  useEffect(() => {
+    getUser();
+    getAdoptions();
+    deleteDog();
+  }, []);
+
   return (
-    <div style={{ marginTop: "100px", color: "black", paddingLeft: 20}}>
-      <h1>Hello {user ? user.name : "User"}, this is your profile page</h1>
-      <div>
-        <p>{user && user.userType}</p>
-        <p>Name: {user && user.name}</p>
-        <p>Email: {user && user.email}</p>
+    <div style={{ color: "black" }}>
+      {/* User Info and Image */}
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={{ flex: 1, padding: "0 20px" }}>
+          <h1>Hello {user ? user.name : "User"}, this is your profile page</h1>
+          <p>{user && user.userType}</p>
+          <p>Name: {user && user.name}</p>
+          <p>Email: {user && user.email}</p>
+          {/* Add other user information here */}
+        </div>
+
+        {/* Image */}
+        <div style={{ flex: 1, textAlign: "center" }}>
+          <img
+            src="https://images.pexels.com/photos/3198032/pexels-photo-3198032.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            alt="User's Profile"
+            style={{ maxWidth: "300px" }}
+          />
+        </div>
       </div>
-      <div className="dog-cards" style={{ overflowY: "scroll", maxHeight: "500px" }}>
-        <h2>Your Dogs</h2>
+
+      <br />
+      <hr />
+
+      {/* Dogs */}
+      <div className="dog-cards" style={{ overflowY: "scroll", maxHeight: "500px", marginTop: "40px" }}>
+        <h2 style={{ color: "black" }}>Your Dogs</h2>
         {dogs &&
           dogs.map((dog) => (
-            <div  key={dog._id} className="dog-card">
+            <div key={dog._id} className="dog-card">
               <img src={dog.image} alt={dog.name} />
               <h3>Name: {dog.name}</h3>
               <h3>Age: {dog.age}</h3>
@@ -100,53 +158,62 @@ function ProfilePage() {
             </div>
           ))}
       </div>
-  
-      {/* Conditionally render the adoption requests */}
-      {user &&
-        user.userType === "User" && (
-          <div>
-            <h2>Your Adoption Requests</h2>
-            <ul>
-              {adoptionRequests.map((request) => (
-                <li key={request._id}>
-                  Dog: {request.name}, Status: {request.status}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
 
-      {/* Conditionally render the manager approval section */}
+      <br />
+      <hr />
+
+      {/* Adoptions */}
       {manager && user.userType === "Manager" && (
-        <div>
-          <h2>Manager Approval Section</h2>
-          {adoptionRequests && adoptionRequests.length > 0 ? (
-            <div className="dog-cards" style={{ overflowY: "scroll", maxHeight: "400px" }}>
-              {adoptionRequests.map((request) => (
-                <div key={request._id} className="dog-card">
-                  <img src={request.image} alt={request.name} />
-                  <h3>Name: {request.name}</h3>
-                  <h3>Status: {request.status}</h3>
-                  <button
-                    style={{
-                      backgroundColor: "blue",
-                      color: "white",
-                      padding: "5px 10px",
-                      border: "none",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => approveAdoption(request._id)}
-                  >
-                    Approve
-                  </button>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>No pending approvals.</p>
-          )}
-        </div>
-      )}
+      <ApprovalSectionContainer>
+        <h2>Manager Approval Section</h2>
+        {adoptionRequests && adoptionRequests.length > 0 ? (
+          <ApprovalCardsContainer>
+            {adoptionRequests.map((request) => {
+              // Find the corresponding dog based on request.dogId
+              const dog = dogs.find((dog) => dog._id === request.dogId);
+
+              return (
+                <ApprovalCard key={request._id}>
+                  <div className="request-info">
+                    <h3>Status: {request.status}</h3>
+                    <h3>Requested Dog:</h3>
+                    {dog && (
+                      <>
+                        <p>Dog Name: {dog.name}</p>
+                        <p>Dog Age: {dog.age}</p>
+                        <p>Dog Breed: {dog.breed}</p>
+                        <p>Dog Size: {dog.size}</p>
+                        <p>Dog Description: {dog.description}</p>
+                      </>
+                    )}
+                    <h3>Requester Info:</h3>
+                    <p>Requester Name: {request.name}</p>
+                    <p>Requester Email: {request.email}</p>
+                    <p>Requester Number: {request.phoneNumber}</p>
+                    {/* Add other requester information here */}
+                  </div>
+                  <img
+                    src={request.image}
+                    alt={request.name}
+                    style={{ maxWidth: "100%", borderRadius: "8px" }}
+                  />
+                  <div className="approval-buttons">
+                    <Button onClick={() => approveAdoption(request._id)}>
+                      Approve
+                    </Button>
+                    <Button onClick={() => rejectAdoption(request._id)}>
+                      Reject
+                    </Button>
+                  </div>
+                </ApprovalCard>
+              );
+            })}
+          </ApprovalCardsContainer>
+        ) : (
+          <p>No pending approvals.</p>
+        )}
+      </ApprovalSectionContainer>
+    )}
     </div>
   );
 }

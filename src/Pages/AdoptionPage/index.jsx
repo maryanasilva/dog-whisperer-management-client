@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://dog-whisperer.onrender.com";
 
 const AdoptionPage = () => {
   const [dogs, setDogs] = useState([]);

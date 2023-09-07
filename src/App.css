@@ -429,39 +429,57 @@ button:hover {
   background-color: #c82333;
 }
 
-/* ProfilePage */
-.profile-container {
+/* ProfilePage.css */
+
+.profile-page {
   padding: 20px;
-  background-color: #ffdb58;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin: 20px auto;
-  max-width: 400px;
 }
 
-.profile-header {
-  text-align: center;
-  margin-bottom: 20px;
+.dog-cards {
+  overflow-y: scroll;
+  max-height: 500px;
+  /* Add other styles as needed */
 }
 
-.profile-title {
-  font-size: 36px;
-  margin: 0;
-  color: #333;
+.manager-approval-cards {
+  overflow-y: scroll;
+  max-height: 400px;
+  /* Add other styles as needed */
 }
 
-.profile-subtitle {
-  font-size: 18px;
-  margin: 0;
-  color: #555;
+.manager-approval-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  /* Add other styles as needed */
 }
 
-.profile-info {
-  text-align: left;
+.approve-button {
+  background-color: blue;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  /* Add other styles as needed */
 }
 
-.profile-item {
-  font-size: 20px;
-  margin: 10px 0;
-  color: #333;
+.delete-from-kennel-button {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  /* Add other styles as needed */
 }
+
+.delete-from-profile-button {
+  background-color: orange;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  /* Add other styles as needed */
+}
+
