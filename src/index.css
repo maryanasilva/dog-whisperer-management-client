@@ -330,3 +330,65 @@ option:disabled {
   font-size: 15px;
   margin-left: 40px;
 }
+
+
+/* Style the team members container */
+.team-members {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Style the team members header */
+.team-members-header {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Style each team member card */
+.team-member {
+  display: inline-block;
+  margin: 0 20px;
+  text-align: center;
+}
+
+/* Style the member's photo */
+.team-member img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%; /* Rounded image */
+}
+
+.team h2 {
+  text-align: center;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Style the member's name */
+.team-member h3 {
+  color: black;
+  margin: 10px 0;
+}
+
+/* Style the GitHub and LinkedIn labels */
+.team-member-links {
+  color: black;
+  margin: 10px 0;
+}
+
+/* Style the member's GitHub and LinkedIn links */
+.team-member-links a {
+  color: #333; /* Dark gray color */
+  font-size: 16px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+/* Style the member's GitHub and LinkedIn links on hover */
+.team-member-links a:hover {
+  text-decoration: underline;
+}
