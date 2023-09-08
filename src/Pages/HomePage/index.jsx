@@ -119,7 +119,7 @@ function HomePage() {
         <div className="service-circles">
           <div className="service-circle">
             <img
-              src="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"
+              src="https://images.pexels.com/photos/9862786/pexels-photo-9862786.jpeg?auto=compress&cs=tinysrgb&w=300"
               alt="Kennels"
             />
             <p>Find a Kennel</p>
@@ -261,7 +261,6 @@ function HomePage() {
         )}
       </div>
 
-      {/* Team */}
       {/* Team */}
       <div className="team">
         <h2>Team Members</h2>
