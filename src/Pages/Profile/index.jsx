@@ -41,7 +41,7 @@ const Button = styled.button`
   }
 `;
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://dog-whisperer.onrender.com";
 
 function ProfilePage() {
   const [user, setUser] = useState(null);
