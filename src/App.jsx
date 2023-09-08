@@ -55,7 +55,6 @@ function App() {
           element={<DogPage category="dogs" />} 
         />
         
-
         <Route
           path="/kennels/:kennelId/add-dog"
           element={<IsPrivate><AddDog /></IsPrivate>}
