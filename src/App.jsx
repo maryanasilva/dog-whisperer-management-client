@@ -14,6 +14,8 @@ import DogPage from "./Pages/DogPage";
 import AddDog from "./Pages/AddDog";
 import EditDogPage from "./Pages/EditDog";
 import AdoptionPage from "./Pages/AdoptionPage";
+import SchoolsPage from "./Pages/SchoolPage";
+import PetCare from "./Pages/PetCare";
 
 function App() {
   return (
@@ -65,6 +67,15 @@ function App() {
           element={<EditDogPage />}
         />
 
+        <Route
+          path="/schools"
+          element={<SchoolsPage category="schools" />}
+        />
+
+        <Route
+          path="/petCare"
+          element={<PetCare category="petCare" />}
+        />
        
       </Routes>
     </div>

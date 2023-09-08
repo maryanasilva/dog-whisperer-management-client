@@ -502,3 +502,68 @@ button:hover {
   margin: 10px 0;
   color: #333;
 }
+
+/* SchoolsPage */
+.schools-page {
+  padding: 20px;
+}
+
+.school-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.school-card {
+  width: 100%;
+  color: black; /* Black text color */
+}
+
+.school h3 {
+  margin-top: 0;
+}
+
+.school p {
+  margin-bottom: 0;
+}
+
+.school-image {
+  width: 100%;
+  height: auto;
+}
+
+
+/* petCare */
+.petCare-page {
+  padding-top: 100px;
+}
+
+.petCare-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px; /* Add padding between schools */
+}
+
+.petCare {
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: calc(33.33% - 20px); 
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; 
+  color: #000; 
+}
+
+.petCare h3 {
+  margin-top: 0;
+}
+
+.petCare p {
+  margin-bottom: 0;
+}
+
+.petCare-image {
+  width: 100%;
+  height: auto;
+}
+
